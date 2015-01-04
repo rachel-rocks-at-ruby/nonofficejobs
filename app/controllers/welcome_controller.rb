@@ -4,4 +4,14 @@ class WelcomeController < ApplicationController
 
   def about
   end
+
+  def blog
+  end
+
+  def brainstorms
+  end
+
+  def inspiration
+  end
+  
 end
