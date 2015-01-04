@@ -13,5 +13,8 @@ class WelcomeController < ApplicationController
 
   def inspiration
   end
+
+  def faq
+  end
   
 end
