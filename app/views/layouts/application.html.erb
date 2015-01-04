@@ -14,7 +14,6 @@
         <li><%= link_to "Blog", welcome_blog_path %></li>
         <li><%= link_to "Brainstorms", welcome_brainstorms_path %></li>
         <li><%= link_to "Inspiration", welcome_inspiration_path %></li>
-      </ul>
 
       <div class="pull-right user-info">
        <% if current_user %>
@@ -24,6 +23,7 @@
          <%= link_to "Sign Up", new_user_registration_path %>
        <% end %>
      </div>
+     </ul>
 
        <% if flash[:notice] %>
          <div class="alert alert-success">
