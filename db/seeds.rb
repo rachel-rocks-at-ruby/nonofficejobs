@@ -31,6 +31,43 @@ posts = Post.all
   )
 end
 
+ # Create an admin user
+ admin = User.new(
+   name:     'Admin User',
+   email:    'admin@example.com',
+   password: 'helloworld',
+   role:     'admin'
+ )
+ admin.skip_confirmation!
+ admin.save!
+ 
+ # Create a moderator
+ moderator = User.new(
+   name:     'Moderator User',
+   email:    'moderator@example.com', 
+   password: 'helloworld',
+   role:     'moderator'
+ )
+ moderator.skip_confirmation!
+ moderator.save!
+ 
+ # Create a member
+ member = User.new(
+   name:     'Member User',
+   email:    'member@example.com',
+   password: 'helloworld',
+ )
+ member.skip_confirmation!
+ member.save!
+
+#Create my account
+ user = User.first
+ user.skip_reconfirmation!
+ user.update_attributes!(
+   email: 'info@jackhuahua.com',
+   password: 'helloworld'
+ )
+
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Post.count} posts created"
