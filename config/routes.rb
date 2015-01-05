@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+
   devise_for :users
-  get 'welcome/index'
-  get 'welcome/about'
-  get 'welcome/faq'
-  get 'welcome/blog'
-  get 'welcome/brainstorms'
-  get 'welcome/inspiration'
+
+  get 'about' => 'welcome#about'
+  get 'faq' => 'welcome#faq'
+  get 'blog' => 'welcome#blog'
+  get 'brainstorms' => 'welcome#brainstorms'
+  get 'inspiration' => 'welcome#inspiration'
 
   root to: 'welcome#index'
 
