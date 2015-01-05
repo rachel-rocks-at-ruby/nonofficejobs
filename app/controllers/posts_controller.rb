@@ -8,6 +8,11 @@ class PostsController < ApplicationController
   end
 
   def new
+    @post = Post.new
+  end
+
+  def create
+    @post = current_user.posts.build(params.require(:post).permit(:title, :body))
   end
 
   def edit
