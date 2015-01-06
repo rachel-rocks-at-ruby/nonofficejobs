@@ -1,0 +1,29 @@
+<h1><%= @job.name %></h1>
+
+<% if policy(@job).update? %>
+  <%= link_to "Edit Job", edit_job_path, class: 'btn btn-success' %>
+<% end %>
+
+<div class="row">
+  <div class="col-md-8">
+    <p class="lead"><%= @job.description %></p>
+    <% @posts.each do |post| %>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= link_to post.title, [@job, post] %>
+          </h4>
+           <small>
+             submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %><br/>
+             <%= post.comments.count %> Comments
+           </small>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-4">
+    <% if policy(Post.new).create? %>
+      <%= link_to "New Post", new_job_post_path(@job), class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>

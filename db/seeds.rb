@@ -12,10 +12,20 @@ require 'faker'
  end
  users = User.all
 
+# Create Jobs
+ 15.times do
+   Job.create!(
+     name:         Faker::Lorem.word,
+     description:  Faker::Lorem.sentence
+   )
+ end
+ jobs = Job.all
+
 # Create Posts
 50.times do
   Post.create!(
-     user:   users.sample,
+    user: users.sample,
+    job:  jobs.sample,
     title:  Faker::Lorem.sentence,
     body:   Faker::Lorem.paragraph
   )
@@ -67,8 +77,11 @@ end
    email: 'info@jackhuahua.com',
    password: 'helloworld'
  )
+ user.skip_confirmation!
+ user.save!
 
 puts "Seed finished"
 puts "#{User.count} users created"
+puts "#{Job.count} users created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
