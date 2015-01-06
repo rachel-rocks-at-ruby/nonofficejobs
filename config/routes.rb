@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
+  resources :users, only: [:update]
 
   get 'about' => 'welcome#about'
   get 'faq' => 'welcome#faq'
