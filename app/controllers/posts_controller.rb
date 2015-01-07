@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   def show
     @job = Job.find(params[:job_id])
     @post = Post.find(params[:id])
+    @comments = @post.comments
   end
 
   def new
