@@ -1,6 +1,6 @@
 <% if current_user %>
   <h4>Add a comment:</h4>
-  <%= form_for [@job, @post, @post.comments.build] do |f| %>
+  <%= form_for [@category, @job, @post, @post.comments.build] do |f| %>
       <div class="form-group">
       <%= f.text_area :body, rows: 4, class: 'form-control', placeholder: "Add a comment:" %>
       </div>

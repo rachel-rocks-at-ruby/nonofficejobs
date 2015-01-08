@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   
   def create
+    @category = Category.find(params[:category_id])
     @post = Post.find(params[:post_id])
     @comment = current_user.comments.new(comment_params)
     @comment.post = @post
@@ -10,7 +11,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:notice] = "Comment was created."
-      redirect_to [@post.job, @post]
+      redirect_to [@category, @post.job, @post]
     else
       flash[:error] = "Comment failed to save."
     end

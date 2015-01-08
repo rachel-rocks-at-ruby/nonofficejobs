@@ -1,11 +1,13 @@
 class PostsController < ApplicationController
   def show
+    @category = Category.find(params[:category_id])
     @job = Job.find(params[:job_id])
     @post = Post.find(params[:id])
     @comments = @post.comments
   end
 
   def new
+    #@category = Category.find(params[:category_id])
     @job = Job.find(params[:job_id])
     @post = Post.new
     authorize @post

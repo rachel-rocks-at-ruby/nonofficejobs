@@ -1,0 +1,26 @@
+<h1><%= @category.title %></h1>
+
+<div class="pull-right">
+  <%# if policy(@job).update? %>
+    <%= link_to "Edit Category", edit_category_path, class: 'btn btn-success' %>
+  <%# end %>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <% @category.jobs.each do |job| %>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= link_to (markdown job.name), [@category, job] %>
+          </h4>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-4">
+    <%# if policy(Post.new).create? %>
+      <%= link_to "New Job", new_category_job_path(@category), class: 'btn btn-success' %>
+    <%# end %>
+  </div>
+</div>

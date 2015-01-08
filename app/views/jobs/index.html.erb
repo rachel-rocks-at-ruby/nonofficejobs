@@ -6,7 +6,7 @@
       <div class="media">
         <div class="media-body">
           <h4 class="media-heading">
-            <%= link_to job.name, job %>
+            <%= link_to job.name, [@category, job] %>
           </h4>
           <small>
             <%= job.description %>
@@ -18,7 +18,7 @@
   </div>
   <div class="col-md-4">
     <% if policy(Job.new).create? %>
-      <%= link_to "New Job", new_job_path, class: 'btn btn-success' %>
+      <%= link_to "New Job", new_category_job_path, class: 'btn btn-success' %>
     <% end %>
   </div>
 </div>

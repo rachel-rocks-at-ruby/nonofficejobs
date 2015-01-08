@@ -12,11 +12,20 @@ require 'faker'
  end
  users = User.all
 
+ # Create Cateogries
+ 20.times do
+   Category.create!(
+     title:  Faker::Lorem.word,
+   )
+ end
+ categories = Category.all
+
 # Create Jobs
  15.times do
    Job.create!(
      name:         Faker::Lorem.word,
-     description:  Faker::Lorem.sentence
+     description:  Faker::Lorem.sentence,
+     category: categories.sample
    )
  end
  jobs = Job.all
@@ -82,6 +91,7 @@ end
 
 puts "Seed finished"
 puts "#{User.count} users created"
-puts "#{Job.count} users created"
+puts "#{Category.count} categories created"
+puts "#{Job.count} jobs created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"

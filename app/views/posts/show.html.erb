@@ -4,11 +4,11 @@
   <div class="col-md-8">
     <p><%= markdown @post.body %></p>
   </div>
-  <div class="col-md-4">
-    <% if policy(@post).edit? %>
-      <%= link_to "Edit", edit_job_post_path(@job, @post), class: 'btn btn-success' %>
-    <% end %>
-  </div>
+<!--   <div class="col-md-4">
+    <%# if policy(@post).edit? %>
+      <%#= link_to "Edit", edit_category_job_post_path(@job, @post), class: 'btn btn-success' %>
+    <%# end %>
+  </div> -->
 </div>
 
 </br>

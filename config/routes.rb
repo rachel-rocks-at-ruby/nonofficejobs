@@ -11,9 +11,11 @@ Rails.application.routes.draw do
 
   root to: 'welcome#index'
 
-  resources :jobs do
-    resources :posts do
-      resources :comments, only: [:create]
+  resources :categories do
+    resources :jobs do
+      resources :posts do
+        resources :comments, only: [:create]
+      end
     end
   end
 end
