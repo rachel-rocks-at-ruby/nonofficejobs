@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   def index
-    @jobs = Job.all
+    @jobs = Job.paginate(page: params[:page], per_page: 10)
     authorize @jobs
   end
 
@@ -11,7 +11,7 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
-    @posts = @job.posts
+    @posts = @job.posts.paginate(page: params[:page], per_page: 10)
     authorize @job
   end
 
