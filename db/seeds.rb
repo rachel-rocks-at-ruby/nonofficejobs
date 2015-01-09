@@ -20,6 +20,20 @@ require 'faker'
  end
  categories = Category.all
 
+# Create Listings
+ 20.times do
+   Listing.create!(
+     title:  Faker::Lorem.word,
+     location: Faker::Address.city,
+     description: Faker::Lorem.sentence,
+     pay: Faker::Commerce.price,
+     compensation: Faker::Lorem.sentence
+     #user: users.sample,
+     #category: categories.sample
+   )
+ end
+ listings = Listing.all
+
 # Create Jobs
  15.times do
    Job.create!(
@@ -69,15 +83,6 @@ end
  )
  moderator.skip_confirmation!
  moderator.save!
- 
- # Create a member
- member = User.new(
-   name:     'Member User',
-   email:    'member@example.com',
-   password: 'helloworld',
- )
- member.skip_confirmation!
- member.save!
 
 #Create my account
  user = User.first
@@ -92,6 +97,7 @@ end
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Category.count} categories created"
+puts "#{Listing.count} listings created"
 puts "#{Job.count} jobs created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"

@@ -24,18 +24,6 @@ class JobsController < ApplicationController
     authorize @job
   end
 
-  def create
-     @category = Category.find(params[:category_id])
-     @job = Job.new(params.require(:job).permit(:name, :description, :public))
-     authorize @job
-     if @job.save
-       redirect_to [@category, @job], notice: "Job was saved successfully."
-     else
-       flash[:error] = "Error creating job. Please try again."
-       render :new
-     end
-   end
- 
    def update
      @category = Category.find(params[:category_id])
      @job = Job.find(params[:id])
@@ -45,6 +33,34 @@ class JobsController < ApplicationController
      else
        flash[:error] = "Error saving job. Please try again"
        render :edit
+     end
+   end
+
+  def create
+     @category = Category.find(params[:category_id])
+     @job = Job.new(params.require(:job).permit(:name, :description, :public))
+     @job.category = @category
+     authorize @job
+     if @job.save
+       redirect_to [@category, @job], notice: "Job was saved successfully."
+     else
+       flash[:error] = "Error creating job. Please try again."
+       render :new
+     end
+   end
+ 
+   def destroy
+     @category = Category.find(params[:category_id])
+     @job = Job.find(params[:id])
+     name = @job.name
+     authorize @job
+ 
+     if @job.destroy
+       flash[:notice] = "\"#{name}\" was deleted successfully."
+       redirect_to @category
+     else
+       flash[:error] = "There was an error deleting the job."
+       render :show
      end
    end
 end

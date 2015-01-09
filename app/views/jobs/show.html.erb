@@ -3,6 +3,10 @@
   <% if policy(@job).update? %>
     <%= link_to "Edit Job", edit_category_job_path, class: 'btn btn-success' %>
   <% end %>
+
+   <% if policy(@job).destroy? %>
+     <%= link_to "Delete Job", [@category, @job], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this job?' } %>
+   <% end %>
 </div>
 
 <div class="row">
@@ -12,7 +16,7 @@
       <div class="media">
         <div class="media-body">
           <h4 class="media-heading">
-            <%= link_to (markdown post.title), [@job.category, @job, post] %>
+            <%= link_to (markdown post.title), [@category, @job, post] %>
           </h4>
            <small>
              submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %><br/>
@@ -22,9 +26,13 @@
       </div>
     <% end %>
   </div>
-<!--    <div class="col-md-4">
-    <%# if policy(Post.new).create? %>
-      <%#= link_to "New Post", new_category_job_post_path, class: 'btn btn-success' %>
-    <%# end %>
-  </div>  -->
+    <div class="col-md-4">
+      <%# if policy(Post.new).create? %>
+        <%= link_to "New Post", new_category_job_post_path(@category, @job), class: 'btn btn-success' %>
+      <%# end %> 
+
+      <%# if policy(@job).destroy? %>
+       <%= link_to "Delete Post", [@category, @job, @post], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this post?' } %>
+      <%# end %>
+    </div> 
 </div>
