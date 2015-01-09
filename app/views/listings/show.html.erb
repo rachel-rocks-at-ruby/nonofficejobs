@@ -7,7 +7,7 @@
 
   
   <%# if policy(@category).destroy? %>
-     <%#= link_to "Delete Category", @category, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this category?' } %> 
+     <%= link_to "Delete Listing", @listing, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this listing?' } %> 
    <%# end %>
 </div>
 
@@ -16,7 +16,12 @@
       <div class="media">
         <div class="media-body">
           <h4 class="media-heading">
-            <%= @listing.description %>
+            <p>Location: <%= @listing.location %></p>
+            <p>Description: <%= @listing.description %></p>
+            <p>Pay: <%= @listing.pay %></p>
+            <p>Compensation detail: <%= @listing.compensation %></p>
+            <p>Listed by: <%= @listing.user_id %></p>
+            <p>Contact email: <%#= @listing.user_id %></p>
           </h4>
         </div>
       </div>

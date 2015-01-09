@@ -1,0 +1,11 @@
+<h1>The Community of Non-Office Jobs</h1>
+
+<% @users.each do |user| %>
+   <div class="media">
+     <div class="media-body">
+       <h4 class="media-heading">
+         <%= link_to user.name, user %>
+       </h4>
+     </div>
+   </div>
+<% end %>

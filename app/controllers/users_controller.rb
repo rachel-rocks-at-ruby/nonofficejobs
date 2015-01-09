@@ -10,6 +10,14 @@ class UsersController < ApplicationController
        redirect_to edit_user_registration_path
      end
    end
+
+  def index
+    @users = User.all
+  end
+
+  def show
+    @user = User.find(params[:id])
+  end
  
    private
  

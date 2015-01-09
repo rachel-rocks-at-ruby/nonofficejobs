@@ -5,25 +5,22 @@ class ListingsController < ApplicationController
   end
 
   def new
-    #@category = Category.find(params[:category_id])
     @listing = Listing.new
     #authorize @job
   end
 
   def show
-    #@category = Category.find(params[:category_id])
+    #@user = User.find(params[:user_id])
     @listing = Listing.find(params[:id])
     #authorize @job
   end
 
   def edit
-    #@category = Category.find(params[:category_id])
     @listing = Listing.find(params[:id])
     #authorize @job
   end
 
    def update
-     #@category = Category.find(params[:category_id])
      @listing = Listing.find(params[:id])
      #authorize @job
      if @listing.update_attributes(listing_params)
@@ -46,14 +43,13 @@ class ListingsController < ApplicationController
    end
  
    def destroy
-     #@category = Category.find(params[:category_id])
-     @listng = Listing.find(params[:id])
+     @listing = Listing.find(params[:id])
      title = @listing.title
      #authorize @job
  
      if @listing.destroy
        flash[:notice] = "\"#{title}\" was deleted successfully."
-       redirect_to @category
+       redirect_to listings_path
      else
        flash[:error] = "There was an error deleting \"#{title}\"."
        render :show
