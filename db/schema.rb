@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150110102752) do
+ActiveRecord::Schema.define(version: 20150110114737) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20150110102752) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "job_id"
+    t.string   "image"
   end
 
   add_index "posts", ["job_id"], name: "index_posts_on_job_id"

@@ -7,13 +7,14 @@
        submitted <%= time_ago_in_words(@post.created_at) %> ago by
        <%= @post.user.name %>
      </small>
+    <div><%= image_tag(@post.image.url) if @post.image? %></div>
     <p><%= markdown @post.body %></p>
   </div>
-<!--   <div class="col-md-4">
+<div class="col-md-4">
     <%# if policy(@post).edit? %>
-      <%#= link_to "Edit", edit_category_job_post_path(@job, @post), class: 'btn btn-success' %>
+      <%= link_to "Edit", edit_category_job_post_path(@category, @job, @post), class: 'btn btn-success' %>
     <%# end %>
-  </div> -->
+  </div> 
 </div>
 
 </br>
