@@ -27,9 +27,9 @@ require 'faker'
      location: Faker::Address.city,
      description: Faker::Lorem.sentence,
      pay: Faker::Commerce.price,
-     compensation: Faker::Lorem.sentence
-     #user: users.sample,
-     #category: categories.sample
+     compensation: Faker::Lorem.sentence,
+     user: users.sample,
+     category: categories.sample
    )
  end
  listings = Listing.all

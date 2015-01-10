@@ -1,4 +1,5 @@
 <h1><%= @listing.title %></h1>
+<h3>(<%= @listing.category.title %>)</h3>
 
 <div class="pull-right">
   <%# if policy(@job).update? %>
@@ -20,8 +21,8 @@
             <p>Description: <%= @listing.description %></p>
             <p>Pay: <%= @listing.pay %></p>
             <p>Compensation detail: <%= @listing.compensation %></p>
-            <p>Listed by: <%= @listing.user_id %></p>
-            <p>Contact email: <%#= @listing.user_id %></p>
+            <p>Listed by: <%= @listing.user.name %></p>
+            <p>Contact email: <%= mail_to @listing.user.email, @listing.user.email %></p>
           </h4>
         </div>
       </div>
