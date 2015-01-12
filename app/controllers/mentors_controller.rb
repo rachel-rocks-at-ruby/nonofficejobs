@@ -30,7 +30,7 @@ class MentorsController < ApplicationController
        flash[:error] = "Error saving mentorship opportunity. Please try again"
        render :edit
      end
-  #  end
+  end
 
   def create
      @mentor = Mentor.new(params.require(:mentor).permit(:description))
