@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :listings
+  has_many :brainstorms
   has_many :posts
   has_many :comments
 

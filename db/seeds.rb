@@ -40,6 +40,7 @@ require 'faker'
    Brainstorm.create!(
      title:  Faker::Lorem.word,
      description: Faker::Lorem.sentence,
+     user: users.sample
    )
  end
  brainstorms = Brainstorm.all

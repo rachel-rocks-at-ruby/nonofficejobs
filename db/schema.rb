@@ -11,14 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150112105046) do
+ActiveRecord::Schema.define(version: 20150112112726) do
 
   create_table "brainstorms", force: true do |t|
     t.string   "title"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "brainstorms", ["user_id"], name: "index_brainstorms_on_user_id"
 
   create_table "categories", force: true do |t|
     t.string   "title"
