@@ -4,6 +4,7 @@ require 'faker'
  5.times do
    user = User.new(
      name:     Faker::Name.name,
+     avatar:   Faker::Avatar.image,
      email:    Faker::Internet.email,
      password: Faker::Lorem.characters(10)
    )
@@ -34,6 +35,15 @@ require 'faker'
  end
  listings = Listing.all
 
+ # Create Brainstorms
+ 20.times do
+   Brainstorm.create!(
+     title:  Faker::Lorem.word,
+     description: Faker::Lorem.sentence,
+   )
+ end
+ brainstorms = Brainstorm.all
+
 # Create Jobs
  15.times do
    Job.create!(
@@ -50,7 +60,8 @@ require 'faker'
     user: users.sample,
     job:  jobs.sample,
     title:  Faker::Lorem.sentence,
-    body:   Faker::Lorem.paragraph
+    body:   Faker::Lorem.paragraph,
+    image:  Faker::Avatar.image
   )
 end
 posts = Post.all
@@ -98,6 +109,7 @@ puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Category.count} categories created"
 puts "#{Listing.count} listings created"
+puts "#{Brainstorm.count} brainstorms created"
 puts "#{Job.count} jobs created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"

@@ -1,6 +1,11 @@
 class CategoriesController < ApplicationController
+
+  add_breadcrumb "home", :root_path
+
   def index
     @categories = Category.paginate(page: params[:page], per_page: 10)
+
+    add_breadcrumb "Categories", categories_path
     # authorize @categories
   end
 

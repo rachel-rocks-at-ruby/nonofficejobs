@@ -1,0 +1,22 @@
+<h1>Brainstorms</h1>
+
+<div class="row">
+  <div class="col-md-8">
+    <% @brainstorms.each do |brainstorm| %>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= link_to brainstorm.title, brainstorm %>
+          </h4>
+        </div>
+      </div>
+    <% end %>
+    <%= will_paginate @brainstorm %>
+  </div>
+  <div class="col-md-4">
+    <%# if policy(Category.new).create? %>
+      <%= link_to "New Brainstorm", new_brainstorm_path, class: 'btn btn-success' %>
+    <%# end %>
+  </div>
+
+</div>

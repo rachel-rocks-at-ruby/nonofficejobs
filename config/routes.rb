@@ -6,12 +6,12 @@ Rails.application.routes.draw do
   get 'about' => 'welcome#about'
   get 'faq' => 'welcome#faq'
   get 'blog' => 'welcome#blog'
-  get 'brainstorms' => 'welcome#brainstorms'
   get 'inspiration' => 'welcome#inspiration'
 
   root to: 'welcome#index'
 
   resources :listings
+  resources :brainstorms
 
   resources :categories do
     resources :jobs do

@@ -1,8 +1,14 @@
 class JobsController < ApplicationController
-  def index
+
+  add_breadcrumb "home", :root_path
+
+ def index
     @category = Category.find(params[:category_id])
     @jobs = Job.paginate(page: params[:page], per_page: 10)
     authorize @jobs
+
+    add_breadcrumb @category.title, category_path(@category)
+    #add_breadcrumb "Jobs", category_jobs_path(@category)
   end
 
   def new
@@ -28,7 +34,7 @@ class JobsController < ApplicationController
      @category = Category.find(params[:category_id])
      @job = Job.find(params[:id])
      authorize @job
-     if @job.update_attributes(params.require(:job).permit(:name, :description, :public))
+     if @job.update_attributes(job_params)
        redirect_to [@category, @job]
      else
        flash[:error] = "Error saving job. Please try again"
@@ -38,7 +44,7 @@ class JobsController < ApplicationController
 
   def create
      @category = Category.find(params[:category_id])
-     @job = Job.new(params.require(:job).permit(:name, :description, :public))
+     @job = Job.new(job_params)
      @job.category = @category
      authorize @job
      if @job.save
@@ -62,5 +68,11 @@ class JobsController < ApplicationController
        flash[:error] = "There was an error deleting the job."
        render :show
      end
+   end
+
+   private
+
+   def job_params
+     params.require(:job).permit(:name, :description, :public)
    end
 end
