@@ -13,6 +13,16 @@ require 'faker'
  end
  users = User.all
 
+# Create Mentors
+ 15.times do
+   Mentor.create!(
+     description: Faker::Lorem.sentence,
+     user: users.sample,
+     job: jobs.sample
+   )
+ end
+ mentors = Mentor.all
+
  # Create Cateogries
  20.times do
    Category.create!(
@@ -108,6 +118,7 @@ end
 
 puts "Seed finished"
 puts "#{User.count} users created"
+puts "#{Mentor.count} mentors created"
 puts "#{Category.count} categories created"
 puts "#{Listing.count} listings created"
 puts "#{Brainstorm.count} brainstorms created"

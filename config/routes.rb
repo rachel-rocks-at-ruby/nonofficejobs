@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :listings
   resources :brainstorms
+  resources :mentors
 
   resources :categories do
     resources :jobs do

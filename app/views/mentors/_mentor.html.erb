@@ -1,0 +1,12 @@
+ <div class="media">
+  <div class="media-body">
+    <h3>Mentors available:</h3>
+      <small>
+        <%= @mentor.user.name %> posted <%= time_ago_in_words(mentor.created_at) %> ago
+<!--         <%# if policy(comment).destroy? %>
+         | <%#= link_to "Delete", [@category, @job, @post, comment], method: :delete %>
+        <%# end %> -->
+      </small>
+      <p><%= mentor.description %></p>
+  </div>
+</div>
