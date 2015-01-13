@@ -13,14 +13,13 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:notice] = "Comment was created."
-      redirect_to [@category, @post.job, @post]
     else
       flash[:error] = "Comment failed to save."
     end
 
-    # respond_with(@comment) do |format|
-    #   format.html { redirect_to [@post.job, @post] }
-    # end
+    respond_with(@comment) do |format|
+      format.html { redirect_to [@category, @post.job, @post] }
+    end
   end
 
    def destroy
@@ -32,10 +31,8 @@ class CommentsController < ApplicationController
      # authorize @comment
      if @comment.destroy
        flash[:notice] = "Comment was removed."
-       # redirect_to [@category, @post.job, @post]
      else
        flash[:error] = "Comment couldn't be deleted. Try again."
-       # redirect_to [@category, @post.job, @post]
      end
 
      respond_with(@comment) do |format|
