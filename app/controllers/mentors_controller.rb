@@ -2,7 +2,7 @@ class MentorsController < ApplicationController
 
   def index
     @mentors = Mentor.paginate(page: params[:page], per_page: 10)
-    # authorize @categories
+    authorize @mentors
   end
 
   def new

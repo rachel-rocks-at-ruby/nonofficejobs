@@ -27,6 +27,7 @@ require 'faker'
  20.times do
    Category.create!(
      title:  Faker::Lorem.word,
+     user: users.sample
    )
  end
  categories = Category.all
@@ -50,7 +51,8 @@ require 'faker'
    Brainstorm.create!(
      title:  Faker::Lorem.word,
      description: Faker::Lorem.sentence,
-     user: users.sample
+     user: users.sample,
+     category: categories.sample
    )
  end
  brainstorms = Brainstorm.all

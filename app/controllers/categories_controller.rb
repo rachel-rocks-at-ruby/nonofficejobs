@@ -4,30 +4,30 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.paginate(page: params[:page], per_page: 10)
-
     add_breadcrumb "Categories", categories_path
-    # authorize @categories
+    authorize @categories
   end
 
   def new
     @category = Category.new
-    # authorize @category
+    authorize @category
   end
 
   def show
     @category = Category.find(params[:id])
     @jobs = @category.jobs.paginate(page: params[:page], per_page: 10)
-    # authorize @category
+    
+    authorize @category
   end
 
   def edit
     @category = Category.find(params[:id])
-    # authorize @category
+    authorize @category
   end
 
    def update
      @category = Category.find(params[:id])
-     # authorize @category
+     authorize @category
      if @category.update_attributes(params.require(:category).permit(:title))
        redirect_to @category
      else
@@ -38,7 +38,7 @@ class CategoriesController < ApplicationController
 
   def create
      @category = Category.new(params.require(:category).permit(:title))
-     # authorize @category
+     authorize @category
 
      if @category.save
        redirect_to @category, notice: "Category was saved successfully."

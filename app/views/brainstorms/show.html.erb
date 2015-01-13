@@ -16,6 +16,7 @@
       <div class="media">
         <div class="media-body">
           <h4 class="media-heading">
+            Category: <%= @brainstorm.category.title %><br />
             <%= @brainstorm.description %><br />
             <small>
               submitted by <%= link_to @brainstorm.user.name, @brainstorm.user %> <%= time_ago_in_words(@brainstorm.created_at) %> ago

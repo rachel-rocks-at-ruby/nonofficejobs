@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :listings
   has_many :brainstorms
+  has_many :categories
   has_many :posts
   has_many :comments
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150112122322) do
+ActiveRecord::Schema.define(version: 20150113192604) do
 
   create_table "brainstorms", force: true do |t|
     t.string   "title"
@@ -19,25 +19,31 @@ ActiveRecord::Schema.define(version: 20150112122322) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "category_id"
   end
 
+  add_index "brainstorms", ["category_id"], name: "index_brainstorms_on_category_id"
   add_index "brainstorms", ["user_id"], name: "index_brainstorms_on_user_id"
 
   create_table "categories", force: true do |t|
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "comments", force: true do |t|
-    t.text     "body"
-    t.integer  "post_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "user_id"
   end
 
-  add_index "comments", ["post_id"], name: "index_comments_on_post_id"
+  add_index "categories", ["user_id"], name: "index_categories_on_user_id"
+
+  create_table "comments", force: true do |t|
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+  end
+
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "jobs", force: true do |t|

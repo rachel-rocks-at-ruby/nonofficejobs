@@ -2,6 +2,7 @@ class BrainstormsController < ApplicationController
 
   def index
     @brainstorms = Brainstorm.paginate(page: params[:page], per_page: 10)
+    authorize @brainstorms
   end
 
   def show
