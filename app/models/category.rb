@@ -4,5 +4,5 @@ class Category < ActiveRecord::Base
 
   default_scope { order('created_at DESC') }
 
-  validates :title, length: { minimum: 4 }, presence: true
+  validates :title, length: { minimum: 2 }, presence: true
 end

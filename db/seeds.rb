@@ -18,7 +18,7 @@ require 'faker'
    Mentor.create!(
      description: Faker::Lorem.sentence,
      user: users.sample,
-     job: jobs.sample
+     # job: jobs.sample
    )
  end
  mentors = Mentor.all
@@ -56,7 +56,7 @@ require 'faker'
  brainstorms = Brainstorm.all
 
 # Create Jobs
- 15.times do
+ 50.times do
    Job.create!(
      name:         Faker::Lorem.word,
      description:  Faker::Lorem.sentence,
@@ -66,7 +66,7 @@ require 'faker'
  jobs = Job.all
 
 # Create Posts
-50.times do
+150.times do
   Post.create!(
     user: users.sample,
     job:  jobs.sample,
@@ -78,7 +78,7 @@ end
 posts = Post.all
 
 # Create Comments
-100.times do
+250.times do
   Comment.create!(
     user: users.sample,   
     post: posts.sample,

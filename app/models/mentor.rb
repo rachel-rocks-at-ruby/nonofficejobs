@@ -4,7 +4,7 @@ class Mentor < ActiveRecord::Base
 
   default_scope { order('created_at DESC') }
 
-  validates :description, length: { minimum: 10 }, presence: true
+  # validates :description, length: { minimum: 10 }, presence: true
   # validates :job, presence: true
-  validates :user, presence: true
+  # validates :user, presence: true
 end

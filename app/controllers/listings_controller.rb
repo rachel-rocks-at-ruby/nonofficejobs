@@ -10,7 +10,6 @@ class ListingsController < ApplicationController
   end
 
   def show
-    #@user = User.find(params[:user_id])
     @listing = Listing.find(params[:id])
     #authorize @job
   end

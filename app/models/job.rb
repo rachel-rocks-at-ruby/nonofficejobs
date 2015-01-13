@@ -3,8 +3,8 @@ class Job < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   has_many :mentors
 
-  validates :name, length: { minimum: 4 }, presence: true
-  validates :description, length: { minimum: 10 }, presence: true
-  validates :category, presence: true
-  validates :user, presence: true
+  # validates :name, length: { minimum: 2 }, presence: true
+  # validates :description, length: { minimum: 8 }, presence: true
+  # validates :category, presence: true
+  # validates :user, presence: true
 end
