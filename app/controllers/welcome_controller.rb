@@ -8,9 +8,6 @@ class WelcomeController < ApplicationController
   def blog
   end
 
-  def brainstorms
-  end
-
   def inspiration
   end
 

@@ -13,16 +13,6 @@ require 'faker'
  end
  users = User.all
 
-# Create Mentors
- 15.times do
-   Mentor.create!(
-     description: Faker::Lorem.sentence,
-     user: users.sample,
-     # job: jobs.sample
-   )
- end
- mentors = Mentor.all
-
  # Create Cateogries
  20.times do
    Category.create!(
@@ -53,6 +43,7 @@ require 'faker'
      description: Faker::Lorem.sentence,
      user: users.sample,
      category: categories.sample
+     #comment: comments.sample
    )
  end
  brainstorms = Brainstorm.all
@@ -67,26 +58,38 @@ require 'faker'
  end
  jobs = Job.all
 
-# Create Posts
-150.times do
-  Post.create!(
-    user: users.sample,
-    job:  jobs.sample,
-    title:  Faker::Lorem.sentence,
-    body:   Faker::Lorem.paragraph,
-    image:  Faker::Avatar.image
-  )
-end
-posts = Post.all
+ # Create Mentors
+ 15.times do
+   Mentor.create!(
+     description: Faker::Lorem.sentence,
+     user: users.sample,
+     job: jobs.sample
+   )
+ end
+ mentors = Mentor.all
 
-# Create Comments
-250.times do
-  Comment.create!(
-    user: users.sample,   
-    post: posts.sample,
-    body: Faker::Lorem.paragraph
-  )
-end
+  # Create Posts
+  150.times do
+    Post.create!(
+      user: users.sample,
+      job:  jobs.sample,
+      title:  Faker::Lorem.sentence,
+      body:   Faker::Lorem.paragraph,
+      image:  Faker::Avatar.image
+      #comment: comments.sample
+    )
+  end
+  posts = Post.all
+
+  # Create Comments
+  250.times do
+    Comment.create!(
+      user: users.sample,
+      body: Faker::Lorem.paragraph
+    )
+  end
+  comments = Comment.all
+
 
  # Create an admin user
  admin = User.new(

@@ -32,12 +32,12 @@
     <% end %>
   </div>
     <div class="col-md-4">
-      <%# if policy(Post.new).create? %>
+      <% if policy(Post.new).create? %>
         <%= link_to "New Post", new_category_job_post_path(@category, @job), class: 'btn btn-success' %>
-      <%# end %> 
+      <% end %> 
 
-      <%# if policy(@job).destroy? %>
+      <% if policy(@job).destroy? %>
        <%= link_to "Delete Post", [@category, @job, @post], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this post?' } %>
-      <%# end %>
+      <% end %>
     </div> 
 </div>

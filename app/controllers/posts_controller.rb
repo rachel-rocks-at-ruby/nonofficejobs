@@ -4,6 +4,7 @@ class PostsController < ApplicationController
     @job = Job.find(params[:job_id])
     @post = Post.find(params[:id])
     @comments = @post.comments
+    authorize @post
   end
 
   def new

@@ -6,22 +6,22 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
-    #authorize @job
+    authorize @listing
   end
 
   def show
     @listing = Listing.find(params[:id])
-    #authorize @job
+    authorize @listing
   end
 
   def edit
     @listing = Listing.find(params[:id])
-    #authorize @job
+    authorize @listing
   end
 
    def update
      @listing = Listing.find(params[:id])
-     #authorize @job
+     authorize @listing
      if @listing.update_attributes(listing_params)
        redirect_to [@listing]
      else
@@ -32,7 +32,7 @@ class ListingsController < ApplicationController
 
   def create
      @listing = Listing.new(listing_params)
-     #authorize @job
+     authorize @listing
      if @listing.save
        redirect_to [@listing], notice: "Job listing was saved successfully."
      else
@@ -44,7 +44,7 @@ class ListingsController < ApplicationController
    def destroy
      @listing = Listing.find(params[:id])
      title = @listing.title
-     #authorize @job
+     authorize @listing
  
      if @listing.destroy
        flash[:notice] = "\"#{title}\" was deleted successfully."

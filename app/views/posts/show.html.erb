@@ -11,9 +11,9 @@
     <p><%= markdown @post.body %></p>
   </div>
 <div class="col-md-4">
-    <%# if policy(@post).edit? %>
+    <% if policy(@post).edit? %>
       <%= link_to "Edit", edit_category_job_post_path(@category, @job, @post), class: 'btn btn-success' %>
-    <%# end %>
+    <% end %>
   </div> 
 </div>
 

@@ -7,23 +7,23 @@ class MentorsController < ApplicationController
 
   def new
     @mentor = Mentor.new
-    # authorize @category
+    authorize @mentor
   end
 
   def show
     @mentor = Mentor.find(params[:id])
     @job = Job.find(params[:job_id])
-    # authorize @category
+    authorize @mentor
   end
 
   def edit
     @mentor = Mentor.find(params[:id])
-    # authorize @category
+    authorize @mentor
   end
 
    def update
      @mentor = Mentor.find(params[:id])
-     # authorize @category
+     authorize @mentor
      if @mentor.update_attributes(params.require(:mentor).permit(:description))
        redirect_to @mentor
      else
@@ -34,7 +34,7 @@ class MentorsController < ApplicationController
 
   def create
      @mentor = Mentor.new(params.require(:mentor).permit(:description))
-     # authorize @category
+     authorize @mentor
 
      if @mentor.save
        redirect_to @category, notice: "Mentorship opportunity was saved successfully."
@@ -44,16 +44,16 @@ class MentorsController < ApplicationController
      end
    end
  
-  #  def destroy
-  #    @category = Category.find(params[:id])
-  #    title = @category.title
+   def destroy
+     @mentor = Mentor.find(params[:id])
+     authorize @mentor
  
-  #    if @category.destroy
-  #      flash[:notice] = "\"#{title}\" was deleted successfully."
-  #      redirect_to categories_path
-  #    else
-  #      flash[:error] = "There was an error deleting the category."
-  #      render :show
-  #    end
-  #  end
+     if @category.destroy
+       flash[:notice] = "Mentorship was deleted successfully."
+       redirect_to categories_path
+     else
+       flash[:error] = "There was an error deleting the mentorship."
+       render :show
+     end
+   end
 end

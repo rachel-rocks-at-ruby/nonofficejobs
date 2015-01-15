@@ -7,14 +7,17 @@ class BrainstormsController < ApplicationController
 
   def show
     @brainstorm = Brainstorm.find(params[:id])
+    authorize @brainstorm
   end
 
   def edit
     @brainstorm = Brainstorm.find(params[:id])
+    authorize @brainstorm
   end
 
    def update
      @brainstorm = Brainstorm.find(params[:id])
+     authorize @brainstorm
 
      if @brainstorm.update_attributes(brainstorm_params)
        redirect_to @brainstorm, notice: "Brainstorm was updated successfully."
@@ -26,11 +29,13 @@ class BrainstormsController < ApplicationController
 
   def new
     @brainstorm = Brainstorm.new
+    authorize @brainstorm
   end
 
   def create
    @brainstorm = Brainstorm.new(brainstorm_params)
-   # authorize @category
+   @brainstorm.user = current_user
+   authorize @brainstorm
 
    if @brainstorm.save
      redirect_to @brainstorm, notice: "Brainstorm was saved successfully."
