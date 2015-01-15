@@ -1,5 +1,5 @@
 class ListingPolicy < ApplicationPolicy
   def index?
-    false
+    user.present?
   end
 end
