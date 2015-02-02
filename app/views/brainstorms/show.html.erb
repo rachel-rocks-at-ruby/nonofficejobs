@@ -27,5 +27,16 @@
         </div>
       </div>
   </div>
-  <div class="col-md-4">
+</div>
+
+<div class="row">
+  <h2>Comments</h2>
+  <div class='col-md-12'>
+    <div class='js-comments'>
+      <%= render partial: 'comments/comment', collection: @comments %>
+    </div>
+    <div class='new-comment'>
+      <%= render 'comments/form' %>
+    </div>
+  </div>
 </div>

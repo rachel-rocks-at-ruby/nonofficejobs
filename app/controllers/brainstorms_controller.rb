@@ -7,6 +7,7 @@ class BrainstormsController < ApplicationController
 
   def show
     @brainstorm = Brainstorm.find(params[:id])
+    @comment = Comment.new
     authorize @brainstorm
   end
 
