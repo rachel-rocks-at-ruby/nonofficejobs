@@ -1,14 +1,14 @@
 <h1><%= @brainstorm.title %></h1>
 
 <div class="pull-right">
-  <%# if policy(@job).update? %>
+  <% if policy(@brainstorm).update? %>
     <%= link_to "Edit Brainstorm", edit_brainstorm_path, class: 'btn btn-success' %>
-  <%# end %>
+  <% end %>
 
   
-  <%# if policy(@category).destroy? %>
-     <%#= link_to "Delete Category", @category, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this category?' } %> 
-   <%# end %>
+  <% if policy(@brainstorm).destroy? %>
+     <%= link_to "Delete Brainstorm", @brainstorm, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this brainstorm?' } %> 
+   <% end %>
 </div>
 
 <div class="row">

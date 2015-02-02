@@ -1,4 +1,5 @@
 <% if @comment.valid? %>
   $('.js-comments').prepend("<%= escape_javascript(render(@comment)) %>");
+  $('#comment_body').val("");
 <% else %>
 <% end %>

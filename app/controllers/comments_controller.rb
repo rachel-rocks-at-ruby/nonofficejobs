@@ -3,7 +3,6 @@ class CommentsController < ApplicationController
   respond_to :html, :js
   
   def create
-    @category = Category.find(params[:category_id])
     @comment = current_user.comments.new(comment_params)
     @new_comment = Comment.new
     authorize @comment
@@ -15,17 +14,14 @@ class CommentsController < ApplicationController
     end
 
     respond_with(@comment) do |format|
-      format.html { redirect_to [@category, @post.job, @post] }
+      format.html { redirect_to [@comment] }
     end
   end
 
    def destroy
-     @category = Category.find(params[:category_id])
-     @job = Job.find(params[:job_id])
-     @post = Post.find(params[:post_id])
-     @comment = @post.comments.find(params[:id])
+     @comment = Comment.find(params[:id])
  
-     # authorize @comment
+     authorize @comment
      if @comment.destroy
        flash[:notice] = "Comment was removed."
      else

@@ -83,9 +83,12 @@ require 'faker'
 
   # Create Comments
   250.times do
+    commentable = (posts + brainstorms).sample
     Comment.create!(
       user: users.sample,
-      body: Faker::Lorem.paragraph
+      body: Faker::Lorem.paragraph,
+      commentable_type: commentable.class.to_s,
+      commentable_id: commentable.id
     )
   end
   comments = Comment.all

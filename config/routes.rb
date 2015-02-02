@@ -13,12 +13,11 @@ Rails.application.routes.draw do
   resources :listings
   resources :brainstorms
   resources :mentors
+  resources :comments, only: [:create, :destroy]
 
   resources :categories do
     resources :jobs do
-      resources :posts do
-        resources :comments, only: [:create, :destroy]
-      end
+      resources :posts
     end
   end
 end
