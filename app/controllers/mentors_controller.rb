@@ -12,7 +12,7 @@ class MentorsController < ApplicationController
 
   def show
     @mentor = Mentor.find(params[:id])
-    @job = Job.find(params[:job_id])
+    #@job = Job.find(params[:job_id])
     authorize @mentor
   end
 
@@ -37,7 +37,7 @@ class MentorsController < ApplicationController
      authorize @mentor
 
      if @mentor.save
-       redirect_to @category, notice: "Mentorship opportunity was saved successfully."
+       redirect_to @mentor, notice: "Mentorship opportunity was saved successfully."
      else
        flash[:error] = "Error creating mentorship opportunity. Please try again."
        render :new
@@ -48,9 +48,9 @@ class MentorsController < ApplicationController
      @mentor = Mentor.find(params[:id])
      authorize @mentor
  
-     if @category.destroy
+     if @mentor.destroy
        flash[:notice] = "Mentorship was deleted successfully."
-       redirect_to categories_path
+       redirect_to mentors_path
      else
        flash[:error] = "There was an error deleting the mentorship."
        render :show

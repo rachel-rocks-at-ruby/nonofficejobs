@@ -20,8 +20,8 @@ class CommentsController < ApplicationController
 
    def destroy
      @comment = Comment.find(params[:id])
- 
      authorize @comment
+     
      if @comment.destroy
        flash[:notice] = "Comment was removed."
      else

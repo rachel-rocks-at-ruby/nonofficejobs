@@ -14,9 +14,8 @@
     <%= will_paginate @listings %>
   </div>
   <div class="col-md-4">
-    <%# if policy(Category.new).create? %>
+    <% if policy(Listing.new).create? %>
       <%= link_to "New Listing", new_listing_path, class: 'btn btn-success' %>
-    <%# end %>
+    <% end %>
   </div>
-
 </div>

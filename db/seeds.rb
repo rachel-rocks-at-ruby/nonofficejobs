@@ -4,6 +4,9 @@ require 'faker'
  5.times do
    user = User.new(
      name:     Faker::Name.name,
+     location: Faker::Address.city,
+     about:       Faker::Lorem.sentence,
+     aspirations: Faker::Lorem.sentence,
      avatar:   Faker::Avatar.image,
      email:    Faker::Internet.email,
      password: Faker::Lorem.characters(10)
