@@ -6,6 +6,11 @@ class PostsController < ApplicationController
     @comments = @post.comments
     @comment = Comment.new
     authorize @post
+
+    add_breadcrumb "home", :root_path
+    add_breadcrumb @category.title, category_path(@category)
+    add_breadcrumb @job.name, category_job_path(@category, @job)
+    add_breadcrumb @post.title
   end
 
   def new

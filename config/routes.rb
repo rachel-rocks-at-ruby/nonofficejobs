@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :brainstorms
   resources :mentors
   resources :comments, only: [:create, :destroy]
+  resources :messages
+  resources :conversations
 
   resources :categories do
     resources :jobs do

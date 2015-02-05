@@ -8,6 +8,9 @@
      <%= link_to "Delete Job", [@category, @job], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this job?' } %>
    <% end %>
   <div class='js-comments'>
+      <%# if policy(@mentor).create? %>
+        <%= link_to "Offer Mentorship", new_mentor_path(job_id: @job.id), class: 'btn btn-success' %>
+      <%# end %> 
     <%#= render 'mentors/mentor' %>
   </div>
 </div>

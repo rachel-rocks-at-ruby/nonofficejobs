@@ -1,5 +1,9 @@
 require 'faker'
 
+f =  File.open("/path/to/some/image.png")
+ 
+a = AvatarUploader.new(f)
+
  # Create Users
  5.times do
    user = User.new(

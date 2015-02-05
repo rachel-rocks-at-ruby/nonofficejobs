@@ -1,14 +1,9 @@
 class JobsController < ApplicationController
 
-  add_breadcrumb "home", :root_path
-
  def index
     @category = Category.find(params[:category_id])
     @jobs = Job.paginate(page: params[:page], per_page: 10)
     authorize @jobs
-
-    add_breadcrumb @category.title, category_path(@category)
-    #add_breadcrumb "Jobs", category_jobs_path(@category)
   end
 
   def new
@@ -22,6 +17,10 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     @posts = @job.posts.paginate(page: params[:page], per_page: 10)
     authorize @job
+
+    add_breadcrumb "home", :root_path
+    add_breadcrumb @category.title, category_path(@category)
+    add_breadcrumb @job.name
   end
 
   def edit

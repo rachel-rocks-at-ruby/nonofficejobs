@@ -1,12 +1,13 @@
  <div class="media">
   <div class="media-body">
     <h3>Mentors available:</h3>
+    <% mentors.each do |m| %>
       <small>
-        <%= @mentor.user.name %> posted <%= time_ago_in_words(mentor.created_at) %> ago
-<!--         <%# if policy(comment).destroy? %>
-         | <%#= link_to "Delete", [@category, @job, @post, comment], method: :delete %>
-        <%# end %> -->
+        <%= mentor.user.name %> posted <%= time_ago_in_words(mentor.created_at) %> ago
+          <p><%= mentor.description %></p>
       </small>
-      <p><%= mentor.description %></p>
+    <% end %>
   </div>
 </div>
+
+<!-- I want to make a partial to list the mentors available for each job. -->

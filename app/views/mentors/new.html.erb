@@ -1,0 +1,24 @@
+<h1>New Mentorship</h1>
+
+<div class="row">
+  <div class="col-md-4">
+    <p>Guidelines for mentorships:</p>
+    <ul>
+      <li>Be clear with what you can offer.</li>
+      <li>Be as detailed as possible.</li>
+      <li>Set up a schedule to meet with your mentee.</li>
+      <li>Systematically meet your goals together!</li>
+    </ul>
+  </div>
+  <div class="col-md-8">
+    <%= form_for [@mentor] do |f| %>
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, rows: 8, class: 'form-control', placeholder: "Enter mentorship description" %>
+      </div>
+      <%= f.hidden_field :job_id, value: @job.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit "Save", class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>

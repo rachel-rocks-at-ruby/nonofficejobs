@@ -7,12 +7,12 @@ class MentorsController < ApplicationController
 
   def new
     @mentor = Mentor.new
+    @job = Job.find(params[:job_id])
     authorize @mentor
   end
 
   def show
     @mentor = Mentor.find(params[:id])
-    #@job = Job.find(params[:job_id])
     authorize @mentor
   end
 
@@ -33,7 +33,7 @@ class MentorsController < ApplicationController
   end
 
   def create
-     @mentor = Mentor.new(params.require(:mentor).permit(:description))
+     @mentor = Mentor.new(params.require(:mentor).permit(:description, :user_id, :job_id))
      authorize @mentor
 
      if @mentor.save

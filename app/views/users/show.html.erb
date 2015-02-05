@@ -9,6 +9,7 @@
             <p>Location: <%= @user.location %></p>
             <p>About: <%= @user.about %></p>
             <p>Aspirations: <%= @user.aspirations %></p>
+            <p>Email: <%= mail_to @user.email, @user.email %></p>
           </h4>
         </div>
       </div>
