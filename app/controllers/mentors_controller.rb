@@ -18,8 +18,10 @@ class MentorsController < ApplicationController
 
   def edit
     @mentor = Mentor.find(params[:id])
-    #@job = Job.find(params[:job_id])
     authorize @mentor
+
+    add_breadcrumb "Home", :root_path
+    add_breadcrumb @mentor.description, mentor_path(@mentor)
   end
 
    def update

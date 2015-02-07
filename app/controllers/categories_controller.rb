@@ -24,6 +24,9 @@ class CategoriesController < ApplicationController
   def edit
     @category = Category.find(params[:id])
     authorize @category
+
+    add_breadcrumb "Home", :root_path
+    add_breadcrumb @category.title, @category
   end
 
    def update

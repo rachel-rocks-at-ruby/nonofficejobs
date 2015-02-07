@@ -28,6 +28,10 @@ class JobsController < ApplicationController
     @category = Category.find(params[:category_id])
     @job = Job.find(params[:id])
     authorize @job
+
+    add_breadcrumb "Home", :root_path
+    add_breadcrumb @category.title, category_path(@category)
+    add_breadcrumb @job.name, category_job_path(@category, @job)
   end
 
    def update

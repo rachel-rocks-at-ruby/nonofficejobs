@@ -17,6 +17,9 @@ class ListingsController < ApplicationController
   def edit
     @listing = Listing.find(params[:id])
     authorize @listing
+
+    add_breadcrumb "Home", :root_path
+    add_breadcrumb @listing.title, listing_path(@listing)
   end
 
    def update

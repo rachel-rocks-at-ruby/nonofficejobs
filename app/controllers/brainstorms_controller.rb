@@ -14,6 +14,9 @@ class BrainstormsController < ApplicationController
   def edit
     @brainstorm = Brainstorm.find(params[:id])
     authorize @brainstorm
+
+    add_breadcrumb "Home", :root_path
+    add_breadcrumb @brainstorm.title, brainstorm_path(@brainstorm)
   end
 
    def update
