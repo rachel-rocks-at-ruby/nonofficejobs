@@ -11,7 +11,6 @@
       <% if policy(Mentor.new).create? %>
         <%= link_to "Offer Mentorship", new_mentor_path(job_id: @job.id), class: 'btn btn-success' %>
       <% end %> 
-    <%#= render 'mentors/mentor' %>
   </div>
 </div>
 
@@ -47,17 +46,17 @@
 
 <div class="row">
   <div class="col-md-8">
-    <h2>Mentorships available:</h2>
-       <div class="media">
-        <div class="media-body">
-          <h3>Mentors available:</h3>
-            <% mentors.each do |m| %>
-              <small>
-                <%= m.user.name %> posted <%= time_ago_in_words(m.created_at) %> ago
-                  <p><%= m.description %></p>
-              </small>
-          <% end %>
+    <h3>Mentorships available for <%= @job.name %></h3>
+    <% @mentors.each do |mentor| %>
+      <% if mentor.job == @job %>
+        <div class="media">
+          <div class="media-body">
+            <h4 class="media-heading">
+              <p><%= link_to mentor.user.name, mentor %></p>
+            </h4>
+          </div>
         </div>
-      </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
