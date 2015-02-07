@@ -44,3 +44,20 @@
       <% end %>
     </div> 
 </div>
+
+<div class="row">
+  <div class="col-md-8">
+    <h2>Mentorships available:</h2>
+       <div class="media">
+        <div class="media-body">
+          <h3>Mentors available:</h3>
+            <% mentors.each do |m| %>
+              <small>
+                <%= m.user.name %> posted <%= time_ago_in_words(m.created_at) %> ago
+                  <p><%= m.description %></p>
+              </small>
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>

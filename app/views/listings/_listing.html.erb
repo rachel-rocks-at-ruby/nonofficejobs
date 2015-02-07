@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-8">
+    <!-- Show listings available for category -->
+    <h3>Job listings available for <%= @category.title %></h3>
+    <% @listings.each do |listing| %>
+      <% if listing.category == @category %>
+        <div class="media">
+          <div class="media-body">
+            <h4 class="media-heading">
+              <p><%= link_to listing.title, listing %></p>
+            </h4>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
