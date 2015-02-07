@@ -8,6 +8,10 @@
       <li>Be positive and supportive.</li>
       <li>Learn from each other!</li>
     </ul>
+    <p>Posts accept Markdown</p>
+      <ul>
+        <li><%= link_to "Markdown Cheat Sheet", "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet", :target => "_blank" %></li>
+      </ul>
   </div>
   <div class="col-md-8">
     <%= render partial: 'form', locals: { job: @job, post: @post } %>

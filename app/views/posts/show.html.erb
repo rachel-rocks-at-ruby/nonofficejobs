@@ -1,4 +1,4 @@
-<h1><%= markdown @post.title %></h1> 
+<h1><%= markdown_to_html @post.title %></h1> 
 
 <div class="row">
   <div class="col-md-8">
@@ -7,7 +7,7 @@
        submitted <%= time_ago_in_words(@post.created_at) %> ago by
        <%= link_to @post.user.name, @post.user %>
      </small>
-    <p><%= markdown @post.body %></p>
+    <p><%= markdown_to_html @post.body %></p>
     <div><%= image_tag(@post.image.url) if @post.image? %></div>
   </div>
 <div class="col-md-4">

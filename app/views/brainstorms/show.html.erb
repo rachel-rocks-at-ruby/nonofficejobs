@@ -1,4 +1,4 @@
-<h1><%= @brainstorm.title %></h1>
+<h1><%= markdown_to_html @brainstorm.title %></h1>
 
 <div class="pull-right">
   <% if policy(@brainstorm).update? %>
@@ -19,7 +19,8 @@
           <% if @brainstorm.category %>
             Category: <%= @brainstorm.category.title %><br />
           <% end %>
-            <%= @brainstorm.description %><br />
+            <%= markdown_to_html @brainstorm.description %><br />
+            </h5>
             <small>
               submitted by <%= link_to @brainstorm.user.name, @brainstorm.user %> <%= time_ago_in_words(@brainstorm.created_at) %> ago
             </small>

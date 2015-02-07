@@ -18,6 +18,10 @@ class PostsController < ApplicationController
     @job = Job.find(params[:job_id])
     @post = Post.new
     authorize @post
+
+    add_breadcrumb "home", :root_path
+    add_breadcrumb @category.title, category_path(@category)
+    add_breadcrumb @job.name, category_job_path(@category, @job)
   end
 
   def edit

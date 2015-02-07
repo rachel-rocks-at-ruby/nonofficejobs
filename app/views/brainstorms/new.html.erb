@@ -2,8 +2,19 @@
 
 <div class="row">
   <div class="col-md-4">
-    <p>Thank you for inspiring the Non-Office Jobs community!</p>
+    <p>Guidelines for brainstorms:</p>
+      <ul>
+        <li>If you want to assign it to a category, create the brainstorm on the category page. Otherwise the poor dear will be an orphan, and not widely viewed.</li>
+      </ul>
+
+    <p>Brainstorms accept Markdown</p>
+      <ul>
+        <li><%= link_to "Markdown Cheat Sheet", "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet", :target => "_blank" %></li>
+      </ul>
+
+    <p><em>Thank you for inspiring the Non-Office Jobs community!</em></p>
   </div>
+
   <div class="col-md-8">
     <%= form_for @brainstorm do |f| %>
       <div class="form-group">
@@ -14,6 +25,7 @@
         <%= f.label :description %>
         <%= f.text_area :description, rows: 8, class: 'form-control', placeholder: "How will you solve it? Incude as much information as possible." %>
       </div>
+      <%#= f.hidden_field :category_id, value: @category.id %>
       <%= f.submit "Save", class: 'btn btn-success' %>
     <% end %>
   </div>
