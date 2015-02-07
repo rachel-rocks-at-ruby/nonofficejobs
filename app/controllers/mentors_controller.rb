@@ -18,6 +18,7 @@ class MentorsController < ApplicationController
 
   def edit
     @mentor = Mentor.find(params[:id])
+    #@job = Job.find(params[:job_id])
     authorize @mentor
   end
 

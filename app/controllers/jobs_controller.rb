@@ -18,7 +18,7 @@ class JobsController < ApplicationController
     @posts = @job.posts.paginate(page: params[:page], per_page: 10)
     authorize @job
 
-    add_breadcrumb "home", :root_path
+    add_breadcrumb "Home", :root_path
     add_breadcrumb @category.title, category_path(@category)
     add_breadcrumb @job.name
   end

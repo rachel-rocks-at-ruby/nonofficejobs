@@ -14,8 +14,8 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @jobs = @category.jobs.paginate(page: params[:page], per_page: 10)
 
-    add_breadcrumb "home", :root_path
-    add_breadcrumb "category"
+    add_breadcrumb "Home", :root_path
+    add_breadcrumb "Category"
     
     authorize @category
   end
