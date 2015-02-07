@@ -3,8 +3,8 @@
     <h3>Mentors available:</h3>
     <% mentors.each do |m| %>
       <small>
-        <%= mentor.user.name %> posted <%= time_ago_in_words(mentor.created_at) %> ago
-          <p><%= mentor.description %></p>
+        <%= m.user.name %> posted <%= time_ago_in_words(m.created_at) %> ago
+          <p><%= m.description %></p>
       </small>
     <% end %>
   </div>

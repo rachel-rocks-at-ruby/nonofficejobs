@@ -1,7 +1,6 @@
 require 'faker'
 
-f =  File.open("/path/to/some/image.png")
- 
+f =  File.open("/home/vagrant/code/nonofficejobs/app/assets/images/Lucy2.jpg")
 a = AvatarUploader.new(f)
 
  # Create Users
@@ -11,7 +10,7 @@ a = AvatarUploader.new(f)
      location: Faker::Address.city,
      about:       Faker::Lorem.sentence,
      aspirations: Faker::Lorem.sentence,
-     avatar:   Faker::Avatar.image,
+     avatar:   a,
      email:    Faker::Internet.email,
      password: Faker::Lorem.characters(10)
    )
@@ -50,7 +49,6 @@ a = AvatarUploader.new(f)
      description: Faker::Lorem.sentence,
      user: users.sample,
      category: categories.sample
-     #comment: comments.sample
    )
  end
  brainstorms = Brainstorm.all
@@ -83,7 +81,6 @@ a = AvatarUploader.new(f)
       title:  Faker::Lorem.sentence,
       body:   Faker::Lorem.paragraph,
       image:  Faker::Avatar.image
-      #comment: comments.sample
     )
   end
   posts = Post.all

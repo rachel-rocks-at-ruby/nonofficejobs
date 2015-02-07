@@ -8,9 +8,9 @@
      <%= link_to "Delete Job", [@category, @job], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this job?' } %>
    <% end %>
   <div class='js-comments'>
-      <%# if policy(@mentor).create? %>
+      <% if policy(Mentor.new).create? %>
         <%= link_to "Offer Mentorship", new_mentor_path(job_id: @job.id), class: 'btn btn-success' %>
-      <%# end %> 
+      <% end %> 
     <%#= render 'mentors/mentor' %>
   </div>
 </div>
@@ -27,7 +27,7 @@
           </h4>
            <small>
              <%= image_tag(post.user.avatar.tiny.url) if post.user.avatar? %>
-             submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %><br/>
+             submitted <%= time_ago_in_words(post.created_at) %> ago by <%= link_to post.user.name, post.user %><br/>
              <%= post.comments.count %> Comments
            </small>
         </div>

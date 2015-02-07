@@ -18,9 +18,9 @@ List it here!</p></h4>
     <%= will_paginate @brainstorm %>
   </div>
   <div class="col-md-4">
-    <%# if policy(Category.new).create? %>
+    <% if policy(Brainstorm.new).create? %>
       <%= link_to "New Brainstorm", new_brainstorm_path, class: 'btn btn-success' %>
-    <%# end %>
+    <% end %>
   </div>
 
 </div>
