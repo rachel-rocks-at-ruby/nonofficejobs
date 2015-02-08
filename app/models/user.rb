@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
   has_many :mentors
+  has_many :favorites
 
   mount_uploader :avatar, AvatarUploader
 

@@ -1,0 +1,11 @@
+<div class="favorite">
+  <% if current_user.id == @favorite.user_id  %>
+    <%= link_to [@favorite], class: 'btn btn-danger' do %>
+      <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unfavorite
+    <% end %>
+  <% else %>
+    <%= link_to [Favorite.new], class: 'btn btn-primary', method: :post do %>
+    <i class="glyphicon glyphicon-star"> </i>&nbsp; Favorite this job listing
+ <% end %>
+  <% end %>
+</div>

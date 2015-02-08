@@ -24,8 +24,8 @@
             <p>Listed by: <%= link_to @listing.user.name, @listing.user %></p>
             <p>Contact email: <%= mail_to @listing.user.email, @listing.user.email %></p>
           </h4>
+          <%#= render partial: 'favorites/favorite' %>
         </div>
       </div>
   </div>
-
 </div>

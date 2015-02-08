@@ -11,6 +11,7 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+    @favorite = Favorite.new
     authorize @listing
   end
 

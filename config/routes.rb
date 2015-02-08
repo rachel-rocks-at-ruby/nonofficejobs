@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy]
   resources :messages
   resources :conversations
+  resources :favorites, only: [:create, :destroy]
 
   resources :categories do
     resources :jobs do

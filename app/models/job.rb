@@ -3,6 +3,8 @@ class Job < ActiveRecord::Base
   belongs_to :user
   has_many :posts, dependent: :destroy
   has_many :mentors, dependent: :destroy
+  has_many :favorites, :as => :favorable
+
 
   #validates :name, length: { minimum: 2 }, presence: true
   #validates :description, length: { minimum: 5 }, presence: true
