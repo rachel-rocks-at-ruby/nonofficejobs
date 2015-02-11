@@ -18,17 +18,45 @@
 
 <div class="row">
   <div class="col-md-8">
-      <div class="media">
-        <div class="media-body">
+    <div class="media">
+      <div class="media-body">
+        <h3>Job Listings by <%= @user.name %>:</h3>
           <h4 class="media-heading">
-            Job Listings by <%= @user.name %>:
             <% @listings.each do |listing| %>
-              <% if listing.user_id == @user.id %>
-                <p><%= link_to listing.title, listing %> (<%= listing.category.title %>) </p>
-              <% end %>
+                <p><%= link_to listing.title, listing %> (<%= listing.category.title if listing.category %>) </p>
             <% end %>
           </h4>
-        </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="media">
+      <div class="media-body">
+        <h3>Brainstorms by <%= @user.name %>:</h3>
+          <h4 class="media-heading">
+            <% @brainstorms.each do |brainstorm| %>
+                <p><%= link_to brainstorm.title, brainstorm %> (<%= brainstorm.category.title if brainstorm.category %>) </p>
+            <% end %>
+          </h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="media">
+      <div class="media-body">
+        <h3>Mentorships offered by <%= @user.name %>:</h3>
+          <h4 class="media-heading">
+            <% @mentorships.each do |mentor| %>
+                <p><%= link_to "Mentorship", mentor %> (<%= mentor.job.name if mentor.job %>) </p>
+            <% end %>
+          </h4>
+      </div>
+    </div>
   </div>
 </div>

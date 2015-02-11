@@ -18,7 +18,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @listings = Listing.all
+    @listings = Listing.where(user_id: @user.id)
+    @brainstorms = Brainstorm.where(user_id: @user.id)
+    @mentorships = Mentor.where(user_id: @user.id)
     authorize @user
   end
  
