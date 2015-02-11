@@ -11,8 +11,12 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
-    @favorite = Favorite.new
+    @favorite = @listing.favorites.where(user_id: current_user.id).first
+    @new_favorite = Favorite.new
     authorize @listing
+
+    add_breadcrumb "Home", :root_path
+    add_breadcrumb "Listings", listings_path
   end
 
   def edit
@@ -36,9 +40,10 @@ class ListingsController < ApplicationController
 
   def create
      @listing = Listing.new(listing_params)
+     @listing.user = current_user
      authorize @listing
      if @listing.save
-       redirect_to [@listing], notice: "Job listing was saved successfully."
+       redirect_to @listing, notice: "Job listing was saved successfully."
      else
        flash[:error] = "Error creating job listing. Please try again."
        render :new

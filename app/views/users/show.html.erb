@@ -21,6 +21,7 @@
       <div class="media">
         <div class="media-body">
           <h4 class="media-heading">
+            Job Listings by <%= @user.name %>:
             <% @listings.each do |listing| %>
               <% if listing.user_id == @user.id %>
                 <p><%= link_to listing.title, listing %> (<%= listing.category.title %>) </p>

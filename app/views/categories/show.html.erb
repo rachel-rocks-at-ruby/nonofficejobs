@@ -21,7 +21,7 @@
     <% end %>
 
     <% if policy(Brainstorm.new).create? %>
-      <%= link_to "New Brainstorm", new_brainstorm_path(@category), class: 'btn btn-success' %>
+      <%= link_to "New Brainstorm", new_brainstorm_path(category_id: @category.id), class: 'btn btn-success' %>
     <% end %>
   </div>
 </div>

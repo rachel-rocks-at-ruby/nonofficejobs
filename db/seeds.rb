@@ -1,7 +1,7 @@
 require 'faker'
 
 f =  File.open("/home/vagrant/code/nonofficejobs/app/assets/images/Lucy2.jpg")
-a = AvatarUploader.new(f)
+
 
  # Create Users
  5.times do
@@ -10,10 +10,10 @@ a = AvatarUploader.new(f)
      location: Faker::Address.city,
      about:       Faker::Lorem.sentence,
      aspirations: Faker::Lorem.sentence,
-     avatar:   a,
      email:    Faker::Internet.email,
      password: Faker::Lorem.characters(10)
    )
+   user.avatar = f
    user.skip_confirmation!
    user.save!
  end

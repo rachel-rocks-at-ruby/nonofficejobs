@@ -33,6 +33,7 @@ class BrainstormsController < ApplicationController
 
   def new
     @brainstorm = Brainstorm.new
+    @category = Category.find(params[:category_id])
     authorize @brainstorm
   end
 
@@ -52,6 +53,6 @@ class BrainstormsController < ApplicationController
   private
 
   def brainstorm_params
-    params.require(:brainstorm).permit(:title, :description)
+    params.require(:brainstorm).permit(:title, :description, :category_id)
   end
 end

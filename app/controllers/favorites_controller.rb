@@ -1,19 +1,16 @@
 class FavoritesController < ApplicationController
   def create
-    @favorite = current_user.favorites.new(favorite_params)
-    #params not working. do i need a nother field?
-    @new_favorite = Favorite.new
+    @favorite = Favorite.new(favorite_params)
+    @favorite.user = current_user
     authorize @favorite
 
     if @favorite.save
       flash[:notice] = "Favorited."
-      redirect_to root_path
-      #how do I redirect back to what was favorited? or just not redirect?
+      redirect_to @favorite.favorable
     else
       flash[:error] = "Favorite failed."
-      redirect_to root_path
+      redirect_to :back
     end
-
   end
 
   private

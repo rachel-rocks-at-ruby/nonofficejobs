@@ -1,11 +1,15 @@
 <div class="favorite">
-  <% if current_user.id == @favorite.user_id  %>
+
+  <% if @favorite %>
     <%= link_to [@favorite], class: 'btn btn-danger' do %>
       <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unfavorite
     <% end %>
   <% else %>
-    <%= link_to [Favorite.new], class: 'btn btn-primary', method: :post do %>
-    <i class="glyphicon glyphicon-star"> </i>&nbsp; Favorite this job listing
- <% end %>
+    <%= form_for Favorite.new do |f| %>
+      <%= f.hidden_field :favorable_id, value: favorable.id %>
+      <%= f.hidden_field :favorable_type, value: favorable.class %>
+      <%= f.submit "Favorite this job posting", class: 'btn btn-primary' %>
+    <% end %>
+    <!-- <i class="glyphicon glyphicon-star"> </i>&nbsp; Favorite this job  listing -->
   <% end %>
 </div>

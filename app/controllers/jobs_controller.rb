@@ -19,7 +19,7 @@ class JobsController < ApplicationController
     @category = Category.find(params[:category_id])
     @job = Job.find(params[:id])
     @posts = @job.posts.paginate(page: params[:page], per_page: 10)
-    @mentors = Mentor.all
+    @mentors = Mentor.where(job_id: @job.id)
     authorize @job
 
     add_breadcrumb "Home", :root_path

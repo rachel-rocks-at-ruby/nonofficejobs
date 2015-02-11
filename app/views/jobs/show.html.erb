@@ -47,7 +47,6 @@
   <div class="col-md-8">
     <h3>Mentorships available for <%= @job.name %></h3>
     <% @mentors.each do |mentor| %>
-      <% if mentor.job == @job %>
         <div class="media">
           <div class="media-body">
             <h4 class="media-heading">
@@ -55,7 +54,6 @@
             </h4>
           </div>
         </div>
-      <% end %>
     <% end %>
   </div>
 </div>
