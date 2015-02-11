@@ -13,8 +13,8 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @jobs = @category.jobs.paginate(page: params[:page], per_page: 10)
-    @listings = Listing.all
-    @brainstorms = Brainstorm.all
+    @listings = Listing.where(category: @category)
+    @brainstorms = Brainstorm.where(category: @category)
 
     add_breadcrumb "Home", :root_path
     add_breadcrumb "Category"

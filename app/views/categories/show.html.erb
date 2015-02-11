@@ -44,7 +44,6 @@
   <div class="col-md-8">
     <h3>Job listings available for <%= @category.title %></h3>
     <% @listings.each do |listing| %>
-      <% if listing.category == @category %>
         <div class="media">
           <div class="media-body">
             <h4 class="media-heading">
@@ -52,7 +51,6 @@
             </h4>
           </div>
         </div>
-      <% end %>
     <% end %>
   </div>
 </div>
@@ -61,7 +59,6 @@
   <div class="col-md-8">
     <h3>Brainstorms for <%= @category.title %></h3>
     <% @brainstorms.each do |brainstorm| %>
-      <% if brainstorm.category == @category %>
         <div class="media">
           <div class="media-body">
             <h4 class="media-heading">
@@ -69,7 +66,6 @@
             </h4>
           </div>
         </div>
-      <% end %>
     <% end %>
   </div>
 </div>

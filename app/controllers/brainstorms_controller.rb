@@ -35,6 +35,8 @@ class BrainstormsController < ApplicationController
     @brainstorm = Brainstorm.new
     @category = Category.find(params[:category_id]) if params[:category_id]
     authorize @brainstorm
+
+    add_breadcrumb @category.title, @category if @category
   end
 
   def create
