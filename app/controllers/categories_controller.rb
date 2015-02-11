@@ -16,7 +16,6 @@ class CategoriesController < ApplicationController
     @listings = Listing.where(category: @category)
     @brainstorms = Brainstorm.where(category: @category)
 
-    add_breadcrumb "Home", :root_path
     add_breadcrumb "Category"
     
     authorize @category
@@ -26,7 +25,6 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     authorize @category
 
-    add_breadcrumb "Home", :root_path
     add_breadcrumb @category.title, @category
   end
 

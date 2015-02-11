@@ -11,7 +11,7 @@ class JobsController < ApplicationController
     @job = Job.new
     authorize @job
 
-    add_breadcrumb "Home", :root_path
+    add_breadcrumb "Home", category_path
     add_breadcrumb @category.title, category_path(@category)
   end
 
@@ -22,7 +22,7 @@ class JobsController < ApplicationController
     @mentors = Mentor.where(job_id: @job.id)
     authorize @job
 
-    add_breadcrumb "Home", :root_path
+    add_breadcrumb "Home", category_path
     add_breadcrumb @category.title, category_path(@category)
     add_breadcrumb @job.name
   end
@@ -32,7 +32,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     authorize @job
 
-    add_breadcrumb "Home", :root_path
+    add_breadcrumb "Home", category_path
     add_breadcrumb @category.title, category_path(@category)
     add_breadcrumb @job.name, category_job_path(@category, @job)
   end

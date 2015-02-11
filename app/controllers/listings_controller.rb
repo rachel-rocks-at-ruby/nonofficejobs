@@ -15,7 +15,6 @@ class ListingsController < ApplicationController
     @new_favorite = Favorite.new
     authorize @listing
 
-    add_breadcrumb "Home", :root_path
     add_breadcrumb "Listings", listings_path
   end
 
@@ -23,7 +22,6 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     authorize @listing
 
-    add_breadcrumb "Home", :root_path
     add_breadcrumb @listing.title, listing_path(@listing)
   end
 

@@ -20,7 +20,6 @@ class MentorsController < ApplicationController
     @mentor = Mentor.find(params[:id])
     authorize @mentor
 
-    add_breadcrumb "Home", :root_path
     add_breadcrumb @mentor.description, mentor_path(@mentor)
   end
 
