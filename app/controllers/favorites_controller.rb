@@ -6,7 +6,7 @@ class FavoritesController < ApplicationController
 
     if @favorite.save
       flash[:notice] = "Favorited."
-      redirect_to @favorite.favorable
+      redirect_to :back
     else
       flash[:error] = "Favorite failed."
       redirect_to :back

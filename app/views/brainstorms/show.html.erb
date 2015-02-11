@@ -24,6 +24,7 @@
             <small>
               submitted by <%= link_to @brainstorm.user.name, @brainstorm.user %> <%= time_ago_in_words(@brainstorm.created_at) %> ago
             </small>
+            <%= render partial: 'favorites/favorite', locals: {favorable: @brainstorm} %>
           </h4>
         </div>
       </div>

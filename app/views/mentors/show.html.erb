@@ -19,6 +19,7 @@
             <p>Listed by: <%= link_to @mentor.user.name, @mentor.user %></p>
             <p>Contact email: <%= mail_to @mentor.user.email, @mentor.user.email %></p>
           </h4>
+          <%= render partial: 'favorites/favorite', locals: {favorable: @mentor} %>
         </div>
       </div>
   </div>

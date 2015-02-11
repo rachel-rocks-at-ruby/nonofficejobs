@@ -8,6 +8,8 @@ class BrainstormsController < ApplicationController
   def show
     @brainstorm = Brainstorm.find(params[:id])
     @comment = Comment.new
+    @favorite = @brainstorm.favorites.where(user_id: current_user.id).first
+    @new_favorite = Favorite.new
     authorize @brainstorm
   end
 

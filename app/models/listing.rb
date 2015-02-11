@@ -1,7 +1,7 @@
 class Listing < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
-  has_many :favorites, :as => :favorable
+  has_many :favorites, :as => :favorable, dependent: :destroy
 
   default_scope { order('created_at DESC') }
 

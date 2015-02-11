@@ -13,6 +13,8 @@ class MentorsController < ApplicationController
 
   def show
     @mentor = Mentor.find(params[:id])
+    @favorite = @mentor.favorites.where(user_id: current_user.id).first
+    @new_favorite = Favorite.new
     authorize @mentor
   end
 
