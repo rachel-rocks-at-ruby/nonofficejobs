@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :messages
   resources :conversations
   resources :favorites, only: [:create, :destroy]
+  resources :friendships, only: [:create, :destroy]
 
   resources :categories do
     resources :jobs do

@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :mentors
   has_many :favorites
+  has_many :friendships
+  has_many :friends, :through => :friendships
 
   mount_uploader :avatar, AvatarUploader
 
