@@ -8,7 +8,12 @@ class MentorsController < ApplicationController
   def new
     @mentor = Mentor.new
     @job = Job.find(params[:job_id])
+    @category = @job.category.id
     authorize @mentor
+
+    add_breadcrumb "Home", mentors_path
+    add_breadcrumb @job.category.title, category_path(@category)
+    add_breadcrumb @job.name, category_job_path(@category, @job)
   end
 
   def show

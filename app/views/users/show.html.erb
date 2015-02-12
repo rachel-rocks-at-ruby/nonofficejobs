@@ -29,7 +29,7 @@
           <h3>Job Listings by <%= @user.name %>:</h3>
             <h4 class="media-heading">
               <% @listings.each do |listing| %>
-                  <p><%= link_to listing.title, listing %> (<%= listing.category.title if listing.category %>) </p>
+                  <p><%= link_to listing.title, listing %> <%= listing.category.title if listing.category %> </p>
               <% end %>
             </h4>
         </div>
@@ -44,7 +44,7 @@
           <h3>Brainstorms by <%= @user.name %>:</h3>
             <h4 class="media-heading">
               <% @brainstorms.each do |brainstorm| %>
-                  <p><%= link_to brainstorm.title, brainstorm %> (<%= brainstorm.category.title if brainstorm.category %>) </p>
+                  <p><%= link_to brainstorm.title, brainstorm %> <%= brainstorm.category.title if brainstorm.category %> </p>
               <% end %>
             </h4>
         </div>
@@ -59,7 +59,7 @@
           <h3>Mentorships offered by <%= @user.name %>:</h3>
             <h4 class="media-heading">
               <% @mentorships.each do |mentor| %>
-                  <p><%= link_to "Mentorship", mentor %> (<%= mentor.job.name if mentor.job %>) </p>
+                  <p><%= link_to mentor.job.name, mentor %> <%= mentor.job.category.title %></p>
               <% end %>
             </h4>
         </div>
