@@ -18,9 +18,24 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @jobs = Job.where(user_id: @user.id)
+    @job = Job.where(user_id: @user.id).first
+    @posts = Post.where(user_id: @user.id)
+    @post = Post.where(user_id: @user.id).first
+    @comments = Comment.where(user_id: @user.id)
+    @comment = Comment.where(user_id: @user.id).first
     @listings = Listing.where(user_id: @user.id)
+    @listing = Listing.where(user_id: @user.id).first
     @brainstorms = Brainstorm.where(user_id: @user.id)
+    @brainstorm = Brainstorm.where(user_id: @user.id).first
     @mentorships = Mentor.where(user_id: @user.id)
+    @mentor = Mentor.where(user_id: @user.id).first
+    @fav_jobs = Favorite.where(favorable_type: "Job", user_id: current_user.id)
+    @fav_job = Favorite.where(favorable_type: "Job", user_id: current_user.id).first
+    @fav_brainstorms = Favorite.where(favorable_type: "Brainstorm", user_id: current_user.id)
+    @fav_brainstorm = Favorite.where(favorable_type: "Brainstorm", user_id: current_user.id).first
+    @fav_mentors = Favorite.where(favorable_type: "Mentor", user_id: current_user.id)
+    @fav_mentor = Favorite.where(favorable_type: "Mentor", user_id: current_user.id).first
     authorize @user
   end
  

@@ -1,62 +1,164 @@
-<%= image_tag(@user.avatar.url) if @user.avatar? %>
 <h1><%= @user.name %></h1>
 
 <div class="row">
-  <div class="col-md-8">
+  <% if @user.avatar? %>
+    <div class="col-md-4">
+      <%= image_tag(@user.avatar.url) %>
+    </div>
+  <% end %>
+
+  <div class="col-md-4">
+    <div class="media">
+      <div class="media-body">
+        <h4 class="media-heading">
+          <p>Location: <%= @user.location %></p>
+          <p>About: <%= @user.about %></p>
+          <p>Aspirations: <%= @user.aspirations %></p>
+          <p>Email: <%= mail_to @user.email, @user.email %></p>
+        </h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <% if @listing %>
+    <div class="col-md-4">
       <div class="media">
         <div class="media-body">
-          <h4 class="media-heading">
-            <p>Location: <%= @user.location %></p>
-            <p>About: <%= @user.about %></p>
-            <p>Aspirations: <%= @user.aspirations %></p>
-            <p>Email: <%= mail_to @user.email, @user.email %></p>
-          </h4>
+          <h3>Job Listings by <%= @user.name %>:</h3>
+            <h4 class="media-heading">
+              <% @listings.each do |listing| %>
+                  <p><%= link_to listing.title, listing %> (<%= listing.category.title if listing.category %>) </p>
+              <% end %>
+            </h4>
         </div>
       </div>
-  </div>
+    </div>
+  <% end %>
+
+  <% if @brainstorm %>
+    <div class="col-md-4">
+      <div class="media">
+        <div class="media-body">
+          <h3>Brainstorms by <%= @user.name %>:</h3>
+            <h4 class="media-heading">
+              <% @brainstorms.each do |brainstorm| %>
+                  <p><%= link_to brainstorm.title, brainstorm %> (<%= brainstorm.category.title if brainstorm.category %>) </p>
+              <% end %>
+            </h4>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @mentor %>
+    <div class="col-md-4">
+      <div class="media">
+        <div class="media-body">
+          <h3>Mentorships offered by <%= @user.name %>:</h3>
+            <h4 class="media-heading">
+              <% @mentorships.each do |mentor| %>
+                  <p><%= link_to "Mentorship", mentor %> (<%= mentor.job.name if mentor.job %>) </p>
+              <% end %>
+            </h4>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <div class="row">
-  <div class="col-md-8">
-    <div class="media">
-      <div class="media-body">
-        <h3>Job Listings by <%= @user.name %>:</h3>
-          <h4 class="media-heading">
-            <% @listings.each do |listing| %>
-                <p><%= link_to listing.title, listing %> (<%= listing.category.title if listing.category %>) </p>
-            <% end %>
-          </h4>
+  <% if @job %>
+    <div class="col-md-4">
+      <div class="media">
+        <div class="media-body">
+          <h3>Jobs by <%= @user.name %>:</h3>
+            <h4 class="media-heading">
+              <% @jobs.each do |job| %>
+                  <p><%= job.name %> <!-- (<%#= listing.category.title if listing.category %>) --> </p>
+              <% end %>
+            </h4>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
+
+  <% if @post %>
+    <div class="col-md-4">
+      <div class="media">
+        <div class="media-body">
+          <h3>Posts by <%= @user.name %>:</h3>
+            <h4 class="media-heading">
+              <% @posts.each do |post| %>
+                  <p><%= post.title %> <!-- (<%#= brainstorm.category.title if brainstorm.category %>) --> </p>
+              <% end %>
+            </h4>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @comment %>
+    <div class="col-md-4">
+      <div class="media">
+        <div class="media-body">
+          <h3>Comments by <%= @user.name %>:</h3>
+            <h4 class="media-heading">
+              <% @comments.each do |comment| %>
+                  <p><%= "comment" %> <!-- (<%#= mentor.job.name if mentor.job %>) --> </p>
+              <% end %>
+            </h4>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
 
-<div class="row">
-  <div class="col-md-8">
-    <div class="media">
-      <div class="media-body">
-        <h3>Brainstorms by <%= @user.name %>:</h3>
-          <h4 class="media-heading">
-            <% @brainstorms.each do |brainstorm| %>
-                <p><%= link_to brainstorm.title, brainstorm %> (<%= brainstorm.category.title if brainstorm.category %>) </p>
-            <% end %>
-          </h4>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div class="row">
-  <div class="col-md-8">
-    <div class="media">
-      <div class="media-body">
-        <h3>Mentorships offered by <%= @user.name %>:</h3>
-          <h4 class="media-heading">
-            <% @mentorships.each do |mentor| %>
-                <p><%= link_to "Mentorship", mentor %> (<%= mentor.job.name if mentor.job %>) </p>
-            <% end %>
-          </h4>
+  <% if @fav_job %>
+    <div class="col-md-4">
+      <div class="media">
+        <div class="media-body">
+          <h3><%= @user.name %>'s Favorite Jobs:</h3>
+            <h4 class="media-heading">
+              <% @fav_jobs.each do |fav_job| %>
+                  <p><%= fav_job.favorable.name %> <!-- (<%#= fav_job.category.title if fav_job.category %>) --> </p>
+              <% end %>
+            </h4>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
+
+  <% if @fav_brainstorm %>
+    <div class="col-md-4">
+      <div class="media">
+        <div class="media-body">
+          <h3><%= @user.name %>'s Favorite Brainstorms:</h3>
+            <h4 class="media-heading">
+              <% @fav_brainstorms.each do |fav_brainstorm| %>
+                  <p><%= fav_brainstorm.favorable.title %> <!-- (<%#= fav_job.category.title if fav_job.category %>) --> </p>
+              <% end %>
+            </h4>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+  <% if @fav_mentor %>
+    <div class="col-md-4">
+      <div class="media">
+        <div class="media-body">
+          <h3><%= @user.name %>'s Favorite Mentors:</h3>
+            <h4 class="media-heading">
+              <% @fav_mentors.each do |fav_mentor| %>
+                  <p><%= Mentorship %> <!-- (<%#= fav_job.category.title if fav_job.category %>) --> </p>
+              <% end %>
+            </h4>
+          </div>
+        </div>
+      </div>
+  <% end %>
 </div>

@@ -58,7 +58,8 @@ f =  File.open("/home/vagrant/code/nonofficejobs/app/assets/images/Lucy2.jpg")
    Job.create!(
      name:         Faker::Lorem.word,
      description:  Faker::Lorem.sentence,
-     category: categories.sample
+     category: categories.sample,
+     user: users.sample
    )
  end
  jobs = Job.all
