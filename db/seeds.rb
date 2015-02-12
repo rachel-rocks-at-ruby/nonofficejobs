@@ -98,6 +98,17 @@ f =  File.open("/home/vagrant/code/nonofficejobs/app/assets/images/Lucy2.jpg")
   end
   comments = Comment.all
 
+# Create Favorites
+  250.times do
+    favorable = (listings + brainstorms + mentors + jobs).sample
+    Favorite.create!(
+      user: users.sample,
+      favorable_type: favorable.class.to_s,
+      favorable_id: favorable.id
+    )
+  end
+  comments = Favorite.all
+
 
  # Create an admin user
  admin = User.new(
@@ -138,3 +149,4 @@ puts "#{Brainstorm.count} brainstorms created"
 puts "#{Job.count} jobs created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+puts "#{Favorite.count} favorites created"
