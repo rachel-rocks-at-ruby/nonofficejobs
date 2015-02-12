@@ -1,0 +1,7 @@
+<% @comments.each do |comment| %>
+  <% if comment.commentable_type == "Brainstorm" %>
+    <p><%= link_to comment.commentable.title, comment.commentable %> (Brainstorm) </p>
+  <% else %>
+    <p><%= link_to comment.commentable.title, category_job_post_path(comment.commentable.job.category.id, comment.commentable.job.id, comment.commentable.id) %> (Post)</p>
+  <% end %>
+<% end %>
