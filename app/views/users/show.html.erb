@@ -141,7 +141,12 @@
           <h3><%= @user.name %>'s Favorite Jobs:</h3>
             <h4 class="media-heading">
               <% @fav_jobs.each do |fav_job| %>
-                <p><%= link_to fav_job.favorable.name, category_job_path(fav_job.favorable.category.id, fav_job.favorable.id) %> <%= fav_job.favorable.category.title %></p>
+                <p><%= link_to fav_job.favorable.name, category_job_path(fav_job.favorable.category.id, fav_job.favorable.id) %> <%= fav_job.favorable.category.title %>
+                <% if @user == current_user %>
+                  <%= link_to favorite_path(fav_job), method: :delete, class: 'btn btn-danger' do %>
+                    <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unfavorite
+                  <% end %></p>
+                <% end %>
               <% end %>
             </h4>
         </div>
@@ -156,7 +161,12 @@
           <h3><%= @user.name %>'s Favorite Brainstorms:</h3>
             <h4 class="media-heading">
               <% @fav_brainstorms.each do |fav_brainstorm| %>
-                <p><%= link_to fav_brainstorm.favorable.title, fav_brainstorm.favorable %> <%= fav_brainstorm.favorable.category.title if fav_brainstorm.favorable.category %> </p>
+                <p><%= link_to fav_brainstorm.favorable.title, fav_brainstorm.favorable %> <%= fav_brainstorm.favorable.category.title if fav_brainstorm.favorable.category %> 
+                <% if @user == current_user %>
+                  <%= link_to favorite_path(fav_brainstorm), method: :delete, class: 'btn btn-danger' do %>
+                    <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unfavorite
+                  <% end %></p>
+                <% end %>
               <% end %>
             </h4>
         </div>
@@ -171,7 +181,12 @@
           <h3><%= @user.name %>'s Favorite Mentorships:</h3>
             <h4 class="media-heading">
               <% @fav_mentors.each do |fav_mentor| %>
-                <p><%= link_to fav_mentor.favorable.job.name, fav_mentor.favorable %> by <%= link_to fav_mentor.favorable.user.name, @fav_mentor.favorable.user %>  </p>
+                <p><%= link_to fav_mentor.favorable.job.name, fav_mentor.favorable %> by <%= link_to fav_mentor.favorable.user.name, @fav_mentor.favorable.user %>  
+                <% if @user == current_user %>
+                  <%= link_to favorite_path(fav_mentor), method: :delete, class: 'btn btn-danger' do %>
+                    <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unfavorite
+                  <% end %></p>
+                <% end %>
               <% end %>
             </h4>
           </div>
@@ -186,7 +201,12 @@
           <h3><%= @user.name %>'s Favorite Job Listings:</h3>
             <h4 class="media-heading">
               <% @fav_listings.each do |fav_listing| %>
-                <p><%= link_to fav_listing.favorable.title, fav_listing.favorable %>  </p>
+                <p><%= link_to fav_listing.favorable.title, fav_listing.favorable %>  
+                <% if @user == current_user %>
+                  <%= link_to favorite_path(fav_listing), method: :delete, class: 'btn btn-danger' do %>
+                    <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unfavorite
+                  <% end %></p>
+                <% end %>
               <% end %>
             </h4>
           </div>
