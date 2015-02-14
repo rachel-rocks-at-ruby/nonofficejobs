@@ -178,4 +178,19 @@
         </div>
       </div>
   <% end %>
+
+  <% if @fav_listing %>
+    <div class="col-md-4">
+      <div class="media">
+        <div class="media-body">
+          <h3><%= @user.name %>'s Favorite Job Listings:</h3>
+            <h4 class="media-heading">
+              <% @fav_listings.each do |fav_listing| %>
+                <p><%= link_to fav_listing.favorable.title, fav_listing.favorable %>  </p>
+              <% end %>
+            </h4>
+          </div>
+        </div>
+      </div>
+  <% end %>
 </div>

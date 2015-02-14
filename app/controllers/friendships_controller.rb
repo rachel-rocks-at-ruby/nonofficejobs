@@ -15,6 +15,6 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find(params[:id])
     @friendship.destroy
       flash[:notice] = "Unfollowed user."
-      redirect_to :back
+      redirect_to user_path(@friendship.friend_id)
   end
 end

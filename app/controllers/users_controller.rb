@@ -39,6 +39,8 @@ class UsersController < ApplicationController
     @fav_brainstorm = Favorite.where(favorable_type: "Brainstorm", user_id: @user.id).first
     @fav_mentors = Favorite.where(favorable_type: "Mentor", user_id: @user.id)
     @fav_mentor = Favorite.where(favorable_type: "Mentor", user_id: @user.id).first
+    @fav_listings = Favorite.where(favorable_type: "Listing", user_id: @user.id)
+    @fav_listing = Favorite.where(favorable_type: "Listing", user_id: @user.id).first
     authorize @user
   end
  
