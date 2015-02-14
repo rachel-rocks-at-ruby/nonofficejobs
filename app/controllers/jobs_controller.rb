@@ -20,8 +20,11 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     @posts = @job.posts.paginate(page: params[:page], per_page: 10)
     @mentors = Mentor.where(job_id: @job.id)
+    @mentor = Mentor.where(job_id: @job.id).first
     @favorite = @job.favorites.where(user_id: current_user.id).first
     @new_favorite = Favorite.new
+    @users = Favorite.where(favorable_type: "Job", favorable_id: @job.id)
+    @user = Favorite.where(favorable_type: "Job", favorable_id: @job.id).first
     authorize @job
 
     add_breadcrumb "Home", categories_path

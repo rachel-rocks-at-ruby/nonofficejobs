@@ -45,16 +45,33 @@
 </div>
 
 <div class="row">
-  <div class="col-md-8">
-    <h3>Mentorships available for <%= @job.name %></h3>
-    <% @mentors.each do |mentor| %>
-        <div class="media">
-          <div class="media-body">
-            <h4 class="media-heading">
-              <p><%= link_to mentor.user.name, mentor %></p>
-            </h4>
+  <% if @mentor %>
+    <div class="col-md-4">
+      <h3>Mentorships available for <%= @job.name %></h3>
+        <% @mentors.each do |mentor| %>
+          <div class="media">
+            <div class="media-body">
+              <h4 class="media-heading">
+                <p><%= link_to mentor.user.name, mentor %></p>
+              </h4>
+            </div>
           </div>
-        </div>
-    <% end %>
-  </div>
+        <% end %>
+    </div>
+  <% end %>
+
+  <% if @user %>
+    <div class="col-md-4">
+      <h3>Users who have favorited <%= @job.name %>:</h3>
+        <% @users.each do |u| %>
+          <div class="media">
+            <div class="media-body">
+              <h4 class="media-heading">
+                <p><%= link_to u.user.name, user_path(u.user) %></p>
+              </h4>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  <% end %> 
 </div>
