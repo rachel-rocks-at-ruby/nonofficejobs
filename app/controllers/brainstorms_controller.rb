@@ -11,6 +11,8 @@ class BrainstormsController < ApplicationController
     @favorite = @brainstorm.favorites.where(user_id: current_user.id).first
     @new_favorite = Favorite.new
     authorize @brainstorm
+
+    add_breadcrumb "Brainstorms", brainstorms_path
   end
 
   def edit

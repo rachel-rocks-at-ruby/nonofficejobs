@@ -16,7 +16,7 @@
           <p>Aspirations: <%= @user.aspirations %></p>
           <p>Email: <%= mail_to @user.email, @user.email %></p>
         </h4>
-        <%= render partial: 'follow' %>
+          <%= render partial: 'follow' %>
       </div>
     </div>
   </div>
@@ -28,7 +28,10 @@
           <h3>Following these users:</h3>
             <h4 class="media-heading">
               <% @friends.each do |friend| %>
-              <p><%= link_to friend.friend.name, friend.friend %> <%= link_to "Unfollow user", friend, method: :delete, class: 'btn btn-danger' %></p>
+              <p><%= link_to friend.friend.name, friend.friend %>
+                <% if @user == current_user %> 
+                  <%= link_to "Unfollow user", friend, method: :delete, class: 'btn btn-danger' %></p>
+                <% end %>
               <% end %>
             </h4>
         </div>

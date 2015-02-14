@@ -11,8 +11,8 @@ class JobsController < ApplicationController
     @job = Job.new
     authorize @job
 
-    add_breadcrumb "Home", category_path
-    add_breadcrumb @category.title, category_path(@category)
+    add_breadcrumb "Home", categories_path
+    add_breadcrumb "Category: #{@category.title}", category_path(@category)
   end
 
   def show
@@ -24,9 +24,9 @@ class JobsController < ApplicationController
     @new_favorite = Favorite.new
     authorize @job
 
-    add_breadcrumb "Home", category_path
-    add_breadcrumb @category.title, category_path(@category)
-    add_breadcrumb @job.name
+    add_breadcrumb "Home", categories_path
+    add_breadcrumb "Category: #{@category.title}", category_path(@category)
+    add_breadcrumb "Job: #{@job.name}"
   end
 
   def edit
@@ -34,9 +34,9 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     authorize @job
 
-    add_breadcrumb "Home", category_path
-    add_breadcrumb @category.title, category_path(@category)
-    add_breadcrumb @job.name, category_job_path(@category, @job)
+    add_breadcrumb "Home", categories_path
+    add_breadcrumb "Category: #{@category.title}", category_path(@category)
+    add_breadcrumb "Job: #{@job.name}", category_job_path(@category, @job)
   end
 
    def update

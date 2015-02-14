@@ -109,6 +109,15 @@ f =  File.open("/home/vagrant/code/nonofficejobs/app/assets/images/Lucy2.jpg")
   end
   comments = Favorite.all
 
+# Create Friendships
+  15.times do
+    Friendship.create!(
+      user: users.sample,
+      friend: users.sample
+    )
+  end
+  friends = Friendship.all
+
 
  # Create an admin user
  admin = User.new(
@@ -150,3 +159,4 @@ puts "#{Job.count} jobs created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
 puts "#{Favorite.count} favorites created"
+puts "#{Friendship.count} friendships created"

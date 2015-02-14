@@ -1,8 +1,8 @@
-<% unless @user == current_user %>
-  <% if @friend_if %>
-    <%= link_to "Unfollow user", @friend_if, method: :delete, class: 'btn btn-danger'  %>
-  <% else %>
-    <%= link_to "Follow this user", friendships_path(friend_id: @user), method: :post, class: 'btn btn-primary'%>
+  <% unless @user == current_user %>
+    <% if @friend_if %>
+      <%= link_to "Unfollow user", @friend_if, method: :delete, class: 'btn btn-danger'  %>
+    <% else %>
+      <%= link_to "Follow this user", friendships_path(friend_id: @user), method: :post, class: 'btn btn-primary'%>
+    <% end %>
   <% end %>
-<% end %>
 

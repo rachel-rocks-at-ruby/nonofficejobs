@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @friends = Friendship.where(user_id: @user.id)
     @friend = Friendship.where(user_id: @user.id).first
-    @friend_if = Friendship.where(friend_id: @user.id).first
+    @friend_if = Friendship.where(user_id: current_user.id).first
     @jobs = Job.where(user_id: @user.id)
     @job = Job.where(user_id: @user.id).first
     @posts = Post.where(user_id: @user.id)
