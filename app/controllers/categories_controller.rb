@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
     @listings = Listing.where(category: @category)
     @brainstorms = Brainstorm.where(category: @category)
 
-    add_breadcrumb "Category"
+    add_breadcrumb "Categories", categories_path
     
     authorize @category
   end
@@ -54,8 +54,8 @@ class CategoriesController < ApplicationController
    def destroy
      @category = Category.find(params[:id])
      title = @category.title
- 
-     #authorize @topic
+     authorize @category
+     
      if @category.destroy
        flash[:notice] = "\"#{title}\" was deleted successfully."
        redirect_to categories_path

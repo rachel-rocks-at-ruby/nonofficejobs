@@ -1,0 +1,9 @@
+<% if @flag %>
+  <%= link_to flag_path(@flag), method: :delete do %>
+    <i class="glyphicon glyphicon-flag" style="color:black"> </i>
+  <% end %> 
+<% else %>
+  <%= link_to flags_path, method: :post do %>
+    <i class="glyphicon glyphicon-flag" style="color:red"> </i>
+  <% end %> 
+<% end %>

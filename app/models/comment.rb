@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
   belongs_to :user
-  belongs_to :commentable, polymorphic: true
+  belongs_to :commentable, polymorphic: true, dependent: :destroy
+  has_many :flags
 
   default_scope { order('created_at DESC') }
 

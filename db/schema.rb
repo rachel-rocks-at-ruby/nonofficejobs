@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150212143205) do
+ActiveRecord::Schema.define(version: 20150214203325) do
 
   create_table "brainstorms", force: true do |t|
     t.string   "title"
@@ -55,6 +55,12 @@ ActiveRecord::Schema.define(version: 20150212143205) do
   end
 
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"
+
+  create_table "flags", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "friendships", force: true do |t|
     t.integer  "user_id"

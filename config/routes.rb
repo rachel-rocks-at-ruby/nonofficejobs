@@ -13,11 +13,12 @@ Rails.application.routes.draw do
   resources :listings
   resources :brainstorms
   resources :mentors
-  resources :comments, only: [:create, :destroy]
   resources :messages
   resources :conversations
   resources :favorites, only: [:create, :destroy]
   resources :friendships, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy]
+  resources :flags, only: [:create, :destroy]
 
   resources :categories do
     resources :jobs do
