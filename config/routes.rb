@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   get 'about' => 'welcome#about'
   get 'faq' => 'welcome#faq'
+  get 'contact' => 'welcome#contact'
   get 'blog' => 'welcome#blog'
+  get 'quizzes' => 'welcome#quizzes'
   get 'inspiration' => 'welcome#inspiration'
 
   root to: 'welcome#index'
@@ -23,6 +25,8 @@ Rails.application.routes.draw do
   resources :categories do
     resources :jobs do
       resources :posts
+        post '/up-vote' => 'votes#up_vote', as: :up_vote
+        post '/down-vote' => 'votes#down_vote', as: :down_vote
     end
   end
 end

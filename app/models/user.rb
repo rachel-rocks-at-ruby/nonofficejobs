@@ -8,10 +8,10 @@ class User < ActiveRecord::Base
   has_many :brainstorms
   has_many :categories
   has_many :posts
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :mentors
-  has_many :favorites
-  has_many :friendships
+  has_many :favorites, dependent: :destroy
+  has_many :friendships, dependent: :destroy
   has_many :friends, :through => :friendships
 
   mount_uploader :avatar, AvatarUploader

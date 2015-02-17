@@ -1,5 +1,5 @@
 <% if @flag %>
-  <%= link_to flag_path(@flag), method: :delete do %>
+  <%= link_to flag_path(@flag), method: :delete, local: "comment", do %>
     <i class="glyphicon glyphicon-flag" style="color:black"> </i>
   <% end %> 
 <% else %>
@@ -7,3 +7,4 @@
     <i class="glyphicon glyphicon-flag" style="color:red"> </i>
   <% end %> 
 <% end %>
+

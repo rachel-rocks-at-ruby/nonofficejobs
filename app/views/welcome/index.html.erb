@@ -1,7 +1,7 @@
 <br/>
 <div class="jumbotron">
   <span class="pull-right">
-    <p><%= link_to "Job Listings", listings_path, class: 'btn btn-primary' %></p>
+    <p><%= link_to "Job Opportunities", listings_path, class: 'btn btn-primary' %></p>
     <p><%= link_to "Meet the Community", users_path, class: 'btn btn-primary' %></p>
   </span>
   <h1>Non-Office Jobs</h1>
@@ -18,7 +18,7 @@
 <div class="row">
   <div class="col-md-4">
     <h2>Discover your life's work</h2>
-    <p>Through quizzes and community, Non-Office Jobs will help you figure out what fulfills you.</p>
+    <p>Through <%= link_to "quizzes", quizzes_path %> and <%= link_to "community", users_path %>, Non-Office Jobs will help you figure out what fulfills you.</p>
     <p>Check out our brainstorms to get started.</p>
     <p><%= link_to "Brainstorms", brainstorms_path, class: 'btn btn-primary' %></p>
   </div>

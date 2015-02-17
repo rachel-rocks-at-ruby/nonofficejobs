@@ -2,6 +2,7 @@ class FlagsController < ApplicationController
   def create
     @flag = Flag.new
     @flag.user = current_user
+    @flag.comment_id = params[:comment_id]
 
     if @flag.save
       flash[:notice] = "Flagged."

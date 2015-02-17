@@ -10,8 +10,15 @@
     <div class="container">
       <ul class="nav nav-tabs">
         <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "About", about_path %></li>
-        <li><%= link_to "FAQ", faq_path %></li>
+        <li><div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">About
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="about">About</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="faq">FAQ</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="contact">Contact</a></li>
+          </ul>
+        </div></li>
         <li><%= link_to "Blog", "http://www.nonofficejobsblog.com/", :target => "_blank"  %></li>
         <li><%= link_to "Brainstorms", brainstorms_path %></li>
         <li><%= link_to "Inspiration", inspiration_path %></li>
@@ -20,7 +27,7 @@
       <div class="pull-right user-info">
        <% if current_user %>
          <%= image_tag(current_user.avatar.tiny.url) if current_user.avatar? %>
-         Hello <%= link_to (current_user.name || current_user.email), edit_user_registration_path %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+         Hello <%= link_to (current_user.name || current_user.email), edit_user_registration_path %>! | <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
        <% else %>
          <%= link_to "Sign In", new_user_session_path %> or 
          <%= link_to "Sign Up", new_user_registration_path %>
@@ -51,3 +58,5 @@
 
   </body>
 </html>
+
+

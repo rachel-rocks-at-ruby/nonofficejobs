@@ -38,7 +38,7 @@
       <%= render partial: 'comments/comment', collection: @comments %>
     </div>
     <div class='new-comment'>
-      <%= render 'comments/form' %>
+      <%= render partial: 'comments/form', locals: {commentable: @brainstorm} %>
     </div>
   </div>
 </div>

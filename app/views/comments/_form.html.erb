@@ -4,8 +4,8 @@
       <div class="form-group">
       <%= f.text_area :body, rows: 4, class: 'form-control', placeholder: "Add a comment:" %>
       </div>
-      <%= f.hidden_field :commentable_type %>
-      <%= f.hidden_field :commentable_id %>
+      <%= f.hidden_field :commentable_type, value: commentable.class %>
+      <%= f.hidden_field :commentable_id, value: commentable.id %>
       <div class="form-group">
         <%= f.submit "Create Comment", class: 'btn btn-success' %>
       </div>
