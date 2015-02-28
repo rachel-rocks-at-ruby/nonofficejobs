@@ -7,11 +7,11 @@ class BrainstormsController < ApplicationController
 
   def show
     @brainstorm = Brainstorm.find(params[:id])
-    @flag = Flag.where(comment_id: comment.id)
-    @comment = Comment.new
-    @comments = @brainstorm.comments
-    @favorite = @brainstorm.favorites.where(user_id: current_user.id).first if current_user
-    @new_favorite = Favorite.new
+    #@flag = Flag.where(comment_id: comment.id)
+    #@comment = Comment.new
+    #@comments = @brainstorm.comments
+    #@favorite = @brainstorm.favorites.where(user_id: current_user.id).first if current_user
+    #@new_favorite = Favorite.new
     authorize @brainstorm
 
     add_breadcrumb "Brainstorms", brainstorms_path

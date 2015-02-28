@@ -23,7 +23,7 @@
            <small>
              <%= image_tag(post.user.avatar.tiny.url) if post.user.avatar? %>
              submitted <%= time_ago_in_words(post.created_at) %> ago by <%= link_to post.user.name, post.user %><br/>
-             <%= post.comments.count %> Comments
+             <%#= post.comments.count %> 
            </small>
         </div>
       </div>
