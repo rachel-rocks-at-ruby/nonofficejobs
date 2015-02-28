@@ -16,7 +16,8 @@ class CategoriesController < ApplicationController
     @listings = Listing.where(category: @category)
     @brainstorms = Brainstorm.where(category: @category)
 
-    add_breadcrumb "Categories", categories_path
+    add_breadcrumb "Categories: ", categories_path
+    add_breadcrumb "Job"
     
     authorize @category
   end
