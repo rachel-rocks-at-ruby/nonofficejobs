@@ -25,8 +25,8 @@ class UsersController < ApplicationController
     @job = Job.where(user_id: @user.id).first
     @posts = Post.where(user_id: @user.id)
     @post = Post.where(user_id: @user.id).first
-    @comments = Comment.where(user_id: @user.id)
-    @comment = Comment.where(user_id: @user.id).first
+    #@comments = Comment.where(user_id: @user.id)
+    #@comment = Comment.where(user_id: @user.id).first
     @listings = Listing.where(user_id: @user.id)
     @listing = Listing.where(user_id: @user.id).first
     @brainstorms = Brainstorm.where(user_id: @user.id)
