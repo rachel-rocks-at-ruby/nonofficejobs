@@ -13,7 +13,9 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @jobs = @category.jobs.paginate(page: params[:page], per_page: 10)
+    @listing = Listing.where(category: @category).first
     @listings = Listing.where(category: @category)
+    @brainstorm = Brainstorm.where(category: @category).first
     @brainstorms = Brainstorm.where(category: @category)
 
     add_breadcrumb "Categories: ", categories_path

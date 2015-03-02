@@ -3,9 +3,9 @@ class PostsController < ApplicationController
     @category = Category.find(params[:category_id])
     @job = Job.find(params[:job_id])
     @post = Post.find(params[:id])
-    @flag = @job
-    @comments = @post.comments
-    @comment = Comment.new
+    #@flag = @job
+    #@comments = @post.comments
+    #@comment = Comment.new
     authorize @post
 
     add_breadcrumb "Home", categories_path

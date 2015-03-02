@@ -40,32 +40,36 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-8">
-    <h3>Job listings available for <%= @category.title %></h3>
-    <% @listings.each do |listing| %>
-        <div class="media">
-          <div class="media-body">
-            <h4 class="media-heading">
-              <p><%= link_to listing.title, listing %></p>
-            </h4>
+<% if @listing %>
+  <div class="row">
+    <div class="col-md-8">
+      <h3>Job listings available for <%= @category.title %></h3>
+      <% @listings.each do |listing| %>
+          <div class="media">
+            <div class="media-body">
+              <h4 class="media-heading">
+                <p><%= link_to listing.title, listing %></p>
+              </h4>
+            </div>
           </div>
-        </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %> 
 
-<div class="row">
-  <div class="col-md-8">
-    <h3>Brainstorms for <%= @category.title %></h3>
-    <% @brainstorms.each do |brainstorm| %>
-        <div class="media">
-          <div class="media-body">
-            <h4 class="media-heading">
-              <p><%= link_to brainstorm.title, brainstorm %></p>
-            </h4>
+<% if @brainstorm %>
+  <div class="row">
+    <div class="col-md-8">
+      <h3>Brainstorms for <%= @category.title %></h3>
+      <% @brainstorms.each do |brainstorm| %>
+          <div class="media">
+            <div class="media-body">
+              <h4 class="media-heading">
+                <p><%= link_to brainstorm.title, brainstorm %></p>
+              </h4>
+            </div>
           </div>
-        </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
