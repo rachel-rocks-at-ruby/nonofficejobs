@@ -15,7 +15,7 @@
       <div class="media">
         <div class="media-body">
           <h4 class="media-heading">
-            <p>Description: <%= @mentor.description %></p>
+            <p>Description: <%= markdown_to_html @mentor.description %></p>
             <p>Listed by: <%= link_to @mentor.user.name, @mentor.user %></p>
             <p>Contact email: <%= mail_to @mentor.user.email, @mentor.user.email %></p>
           </h4>

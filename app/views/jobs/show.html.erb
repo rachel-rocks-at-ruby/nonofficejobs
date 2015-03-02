@@ -9,6 +9,10 @@
    <% end %>
 </div>
 
+<div class="pull-right">
+
+</div>
+
 <div class="row">
   <div class="col-md-8">
     <p><%= markdown_to_html @job.description %></p>
@@ -33,6 +37,10 @@
       <% if policy(Post.new).create? %>
         <%= link_to "New Post", new_category_job_post_path(@category, @job), class: 'btn btn-success' %>
       <% end %> 
+
+      <% if policy(Mentor.new).create? %>
+        <%= link_to "Offer Mentorship", new_mentor_path(job_id: @job.id), class: 'btn btn-success' %>
+      <% end %>
     </div> 
 </div>
 
@@ -40,11 +48,6 @@
   <% if @mentor %>
     <div class="col-md-4">
       <h3>Mentorships available for <%= @job.name %></h3>
-      <div class='js-comments'>
-        <% if policy(Mentor.new).create? %>
-          <%= link_to "Offer Mentorship", new_mentor_path(job_id: @job.id), class: 'btn btn-success' %>
-      <% end %> 
-     </div>
         <% @mentors.each do |mentor| %>
           <div class="media">
             <div class="media-body">

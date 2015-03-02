@@ -6,7 +6,7 @@
       <div class="media">
         <div class="media-body">
           <h4 class="media-heading">
-            <%= mentor.job.name %> by <%= link_to mentor.user.name, mentor %>
+            <%= link_to mentor.job.name, mentor %> by <%= link_to mentor.user.name, mentor.user %>
           </h4>
         </div>
       </div>
