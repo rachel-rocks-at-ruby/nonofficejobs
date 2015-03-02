@@ -78,7 +78,7 @@ class PostsController < ApplicationController
  
      if @post.destroy
        flash[:notice] = "\"#{title}\" was deleted successfully."
-       redirect_to @job
+       redirect_to category_job_path(@category, @job)
      else
        flash[:error] = "There was an error deleting the post."
        render :show
