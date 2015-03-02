@@ -6,6 +6,7 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
+    @category = Category.find(params[:category_id]) if params[:category_id]
     authorize @listing
   end
 
@@ -65,6 +66,7 @@ class ListingsController < ApplicationController
    private
 
   def listing_params
-    params.require(:listing).permit(:title, :location, :description, :pay, :compensation)
+    @category = Category.find(params[:category_id]) if params[:category_id]
+    params.require(:listing).permit(:title, :location, :description, :pay, :compensation, :category_id)
   end
 end

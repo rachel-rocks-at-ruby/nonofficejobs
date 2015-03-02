@@ -17,7 +17,7 @@
     <% end %>
 
     <% if policy(Listing.new).create? %>
-      <%= link_to "New Job Listing", new_listing_path(@category), class: 'btn btn-success' %>
+      <%= link_to "New Job Listing", new_listing_path(category_id: @category.id), class: 'btn btn-success' %>
     <% end %>
 
     <% if policy(Brainstorm.new).create? %>
