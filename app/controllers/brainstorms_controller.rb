@@ -57,6 +57,19 @@ class BrainstormsController < ApplicationController
    end
  end
 
+  def destroy
+     @brainstorm = Brainstorm.find(params[:id])
+     authorize @brainstorm
+ 
+     if @brainstorm.destroy
+       flash[:notice] = "Brainstorm was deleted successfully."
+       redirect_to brainstorms_path
+     else
+       flash[:error] = "There was an error deleting the brainstorm."
+       render :show
+     end
+  end
+
   private
 
   def brainstorm_params
