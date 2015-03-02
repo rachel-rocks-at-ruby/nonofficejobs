@@ -17,7 +17,7 @@
         <div class="media-body">
           <h4 class="media-heading">
             <p>Location: <%= @listing.location %></p>
-            <p>Description: <%= @listing.description %></p>
+            <p>Description: <%= markdown_to_html @listing.description %></p>
             <p>Pay: <%= @listing.pay %></p>
             <p>Compensation detail: <%= @listing.compensation %></p>
             <p>Listed by: <%= link_to @listing.user.name, @listing.user %></p>
