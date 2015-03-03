@@ -3,6 +3,8 @@ class PostsController < ApplicationController
     @category = Category.find(params[:category_id])
     @job = Job.find(params[:job_id])
     @post = Post.find(params[:id])
+    @favorite = @post.favorites.where(user_id: current_user.id).first
+    @new_favorite = Favorite.new
     #@flag = @job
     #@comments = @post.comments
     #@comment = Comment.new

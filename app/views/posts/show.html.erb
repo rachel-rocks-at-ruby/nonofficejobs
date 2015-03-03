@@ -11,6 +11,7 @@
        submitted <%= time_ago_in_words(@post.created_at) %> ago by
        <%= link_to @post.user.name, @post.user %></p>
     </small>
+    <%= render partial: 'favorites/favorite', locals: {favorable: @post} %>
       <p><%= markdown_to_html @post.body %></p>
       <div><%= image_tag(@post.image.url) if @post.image? %></div>
     </div>

@@ -35,6 +35,8 @@ class UsersController < ApplicationController
     @mentor = Mentor.where(user_id: @user.id).first
     @fav_jobs = Favorite.where(favorable_type: "Job", user_id: @user.id)
     @fav_job = Favorite.where(favorable_type: "Job", user_id: @user.id).first
+    @fav_posts = Favorite.where(favorable_type: "Post", user_id: @user.id)
+    @fav_post = Favorite.where(favorable_type: "Post", user_id: @user.id).first
     @fav_brainstorms = Favorite.where(favorable_type: "Brainstorm", user_id: @user.id)
     @fav_brainstorm = Favorite.where(favorable_type: "Brainstorm", user_id: @user.id).first
     @fav_mentors = Favorite.where(favorable_type: "Mentor", user_id: @user.id)

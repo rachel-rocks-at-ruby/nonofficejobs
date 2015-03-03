@@ -217,4 +217,24 @@
         </div>
       </div>
   <% end %>
+
+  <% if @fav_post %>
+    <div class="col-md-4">
+      <div class="media">
+        <div class="media-body">
+          <h3><%= @user.name %>'s Favorite Posts:</h3>
+            <h4 class="media-heading">
+              <% @fav_posts.each do |fav_post| %>
+                <p><%= link_to fav_post.favorable.title, category_job_post_path(fav_post.favorable.job.category.id, fav_post.favorable.job.id, fav_post.favorable) %>  
+                <% if @user == current_user %>
+                  <%= link_to favorite_path(fav_post), method: :delete, class: 'btn btn-danger' do %>
+                    <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unfavorite
+                  <% end %></p>
+                <% end %>
+              <% end %>
+            </h4>
+          </div>
+        </div>
+      </div>
+  <% end %>
 </div>
