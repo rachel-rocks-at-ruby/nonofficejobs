@@ -235,6 +235,7 @@ DEPENDENCIES
   jquery-rails
   mailboxer
   mini_magick
+  omniauth
   omniauth-facebook
   pg
   pry
