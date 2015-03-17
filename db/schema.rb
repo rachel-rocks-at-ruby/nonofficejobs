@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150215152415) do
+ActiveRecord::Schema.define(version: 20150317004153) do
 
   create_table "brainstorms", force: true do |t|
     t.string   "title"
@@ -198,6 +198,8 @@ ActiveRecord::Schema.define(version: 20150215152415) do
     t.string   "location"
     t.text     "about"
     t.text     "aspirations"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

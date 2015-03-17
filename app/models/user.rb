@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   acts_as_messageable
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable,
+         :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :listings
   has_many :brainstorms
