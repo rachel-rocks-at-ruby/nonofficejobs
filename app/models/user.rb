@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   acts_as_messageable
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, 
+         :recoverable, :rememberable, :trackable, :confirmable,
          :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :listings
@@ -31,5 +31,9 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name   # assuming the user model has a name
     end
+  end
+
+  def mailboxer_email(object)
+    email
   end
 end

@@ -16,6 +16,18 @@ class MentorsController < ApplicationController
     add_breadcrumb @job.name, category_job_path(@category, @job)
   end
 
+  def create
+     @mentor = Mentor.new(params.require(:mentor).permit(:description, :user_id, :job_id))
+     authorize @mentor
+
+     if @mentor.save
+       redirect_to @mentor, notice: "Mentorship opportunity was saved successfully."
+     else
+       flash[:error] = "Error creating mentorship opportunity. Please try again."
+       render :new
+     end
+  end
+
   def show
     @mentor = Mentor.find(params[:id])
     @favorite = @mentor.favorites.where(user_id: current_user.id).first
@@ -40,18 +52,6 @@ class MentorsController < ApplicationController
        render :edit
      end
   end
-
-  def create
-     @mentor = Mentor.new(params.require(:mentor).permit(:description, :user_id, :job_id))
-     authorize @mentor
-
-     if @mentor.save
-       redirect_to @mentor, notice: "Mentorship opportunity was saved successfully."
-     else
-       flash[:error] = "Error creating mentorship opportunity. Please try again."
-       render :new
-     end
-   end
  
    def destroy
      @mentor = Mentor.find(params[:id])

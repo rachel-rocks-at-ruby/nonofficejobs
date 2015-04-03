@@ -8,3 +8,5 @@ development:
   AWS_BUCKET: 
 production:
   AWS_BUCKET:
+GMAIL_USERNAME:
+GMAIL_PASSWORD:

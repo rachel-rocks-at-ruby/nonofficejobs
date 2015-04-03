@@ -16,7 +16,17 @@ Rails.application.routes.draw do
   resources :brainstorms
   resources :mentors
   resources :messages
-  resources :conversations
+  resources :conversations do
+    member do
+      post :reply
+      post :trash
+      post :untrash
+    end
+   collection do
+      get :trashbin
+      post :empty_trash
+   end
+  end
   resources :favorites, only: [:create, :destroy]
   resources :friendships, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]
