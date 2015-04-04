@@ -34,6 +34,7 @@
     <% end %>
   </div>
     <div class="col-md-4">
+        <%= link_to "Add Resource", new_resource_path, class: 'btn btn-success' %>
       <% if policy(Post.new).create? %>
         <%= link_to "New Post", new_category_job_post_path(@category, @job), class: 'btn btn-success' %>
       <% end %> 

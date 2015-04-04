@@ -8,6 +8,12 @@
       <li>Contribute a post after submitting the job.</li>
       <li>Share the job with the world!</li>
     </ul>
+    <p>Jobs accept Markdown</p>
+      <ul>
+        <li><%= link_to "Markdown Cheat Sheet", "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet", :target => "_blank" %></li>
+      </ul>
+
+    <p>
   </div>
   <div class="col-md-8">
     <%= form_for [@category, @job] do |f| %>

@@ -4,6 +4,7 @@ class Job < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   has_many :mentors
   has_many :favorites, :as => :favorable, dependent: :destroy
+  has_many :resources
 
 
   #validates :name, length: { minimum: 2 }, presence: true

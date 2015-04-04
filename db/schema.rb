@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150317004153) do
+ActiveRecord::Schema.define(version: 20150404035601) do
 
   create_table "brainstorms", force: true do |t|
     t.string   "title"
@@ -174,6 +174,19 @@ ActiveRecord::Schema.define(version: 20150317004153) do
 
   add_index "posts", ["job_id"], name: "index_posts_on_job_id"
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
+  create_table "resources", force: true do |t|
+    t.string   "link"
+    t.string   "title"
+    t.string   "body"
+    t.integer  "user_id"
+    t.integer  "job_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "resources", ["job_id"], name: "index_resources_on_job_id"
+  add_index "resources", ["user_id"], name: "index_resources_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

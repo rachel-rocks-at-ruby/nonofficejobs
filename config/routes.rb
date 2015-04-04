@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :brainstorms
   resources :mentors
   resources :messages
+  resources :resources
   resources :conversations do
     member do
       post :reply
