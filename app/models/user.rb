@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   acts_as_messageable
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :confirmable,
+         :recoverable, :rememberable, :validatable, :trackable, :confirmable,
          :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :listings
@@ -28,9 +28,13 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      #binding.prywqewqewq
-      #puts auth
-      user.email = auth.info.email
+      if auth.info.email
+        user.email = auth.info.email
+      else 
+        user.email = 'change@me.com'
+      end
+
+
       user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name   # assuming the user model has a name
     end

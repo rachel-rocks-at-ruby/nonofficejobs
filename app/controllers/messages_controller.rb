@@ -1,8 +1,13 @@
 class MessagesController < ApplicationController
 	# GET /message/new
   def new
-    @user = User.find(params[:user])
-    @message = current_user.messages.new
+    unless params[:user]
+      redirect_to root_path, notice: 'no'
+    else
+      @user = User.find(params[:user])
+      @message = current_user.messages.new
+    end
+
   end
  
   # POST /message/create

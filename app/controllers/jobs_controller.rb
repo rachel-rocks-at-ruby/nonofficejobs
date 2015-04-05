@@ -25,6 +25,7 @@ class JobsController < ApplicationController
     @new_favorite = Favorite.new
     @users = Favorite.where(favorable_type: "Job", favorable_id: @job.id)
     @user = Favorite.where(favorable_type: "Job", favorable_id: @job.id).first
+    @resources = Resource.where(job_id: @job.id)
     authorize @job
 
     add_breadcrumb "Home", categories_path

@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   resources :brainstorms
   resources :mentors
   resources :messages
-  resources :resources
   resources :conversations do
     member do
       post :reply
@@ -35,6 +34,7 @@ Rails.application.routes.draw do
 
   resources :categories do
     resources :jobs do
+      resources :resources
       resources :posts
         post '/up-vote' => 'votes#up_vote', as: :up_vote
         post '/down-vote' => 'votes#down_vote', as: :down_vote

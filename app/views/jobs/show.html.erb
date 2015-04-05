@@ -17,6 +17,13 @@
   <div class="col-md-8">
     <p><%= markdown_to_html @job.description %></p>
     <%= render partial: 'favorites/favorite', locals: {favorable: @job} %>
+    <br>
+    <% @resources.each do |resource| %>
+      <%= link_to resource.title, resource.link %><br>
+      submitted by <%= resource.user.name %>
+      <%= link_to "Edit Resource", edit_category_job_resource_path(@category, @job, resource), class: 'btn btn-success' %> 
+      <%= link_to "Delete", [@category, @job, resource], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this resource?' } %><br>
+    <% end %>
     <% @posts.each do |post| %>
       <div class="media">
         <div class="media-body">
@@ -34,7 +41,7 @@
     <% end %>
   </div>
     <div class="col-md-4">
-        <%= link_to "Add Resource", new_resource_path, class: 'btn btn-success' %>
+        <%= link_to "Add Resource", new_category_job_resource_path(@category, @job), class: 'btn btn-success' %>
       <% if policy(Post.new).create? %>
         <%= link_to "New Post", new_category_job_post_path(@category, @job), class: 'btn btn-success' %>
       <% end %> 
