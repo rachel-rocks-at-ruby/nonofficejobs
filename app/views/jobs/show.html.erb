@@ -21,6 +21,7 @@
     <% @resources.each do |resource| %>
     <a class="embedly-card" href=<%= resource.link %> data-card-theme="dark"></a>
       submitted by <%= resource.user.name %>
+      <%#= render partial: 'favorites/favorite', locals: {favorable: @resource} %>
       <%= link_to "Edit Resource", edit_category_job_resource_path(@category, @job, resource), class: 'btn btn-success' %> 
       <%= link_to "Delete", [@category, @job, resource], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this resource?' } %><br>
     <% end %>
